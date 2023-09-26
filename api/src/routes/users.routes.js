@@ -8,6 +8,6 @@ routerUser.post("/", handlerPostUser);
 
 routerUser.get("/", handlerGetUsers);
 
-routerUser.put("/", handlerPutUsers);
+routerUser.put("/:id", handlerPutUsers);
 
 module.exports = routerUser;
