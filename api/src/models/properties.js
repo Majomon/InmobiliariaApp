@@ -32,6 +32,12 @@ const propertiesSchema = mongoose.Schema({
       required: true,
     },
   },
+  images: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   price: {
     type: Number,
     required: true,
@@ -49,7 +55,6 @@ const propertiesSchema = mongoose.Schema({
   //Mts cuadrados
   area: {
     type: Number,
-    required: true,
   },
   availability: {
     type: Boolean,

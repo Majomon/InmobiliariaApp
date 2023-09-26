@@ -1,6 +1,5 @@
 const controllerPutProperty = require("../../controllers/propertys/controllerPutProperty");
 
-
 const handlerPutProperty = async (req, res) => {
   const { id } = req.params;
   const {
@@ -8,6 +7,7 @@ const handlerPutProperty = async (req, res) => {
     description,
     address,
     price,
+    images,
     bedrooms,
     bathrooms,
     area,
@@ -20,6 +20,7 @@ const handlerPutProperty = async (req, res) => {
       description,
       address,
       price,
+      images,
       bedrooms,
       bathrooms,
       area,
