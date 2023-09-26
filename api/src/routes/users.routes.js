@@ -1,6 +1,6 @@
-const handlerGetUsers = require("../handlers/handlerGetUsers");
-const handlerPostUser = require("../handlers/handlerPostUser");
-const handlerPutUsers = require("../handlers/handlerPutUsers");
+const handlerPostUser = require("../handlers/users/handlerPostUser");
+const handlerGetUsers = require("../handlers/users/handlerGetUsers");
+const handlerPutUsers = require("../handlers/users/handlerPutUsers");
 
 const routerUser = require("express").Router();
 

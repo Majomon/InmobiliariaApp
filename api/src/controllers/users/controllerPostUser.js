@@ -1,4 +1,4 @@
-const User = require("../models/users");
+const User = require("../../models/users");
 
 const controllerPostUser = async ({ name, age, email }) => {
   if (!name || !age || !email) {
