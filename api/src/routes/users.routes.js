@@ -1,15 +1,13 @@
+const handlerGetUsers = require("../handlers/handlerGetUsers");
 const handlerPostUser = require("../handlers/handlerPostUser");
+const handlerPutUsers = require("../handlers/handlerPutUsers");
 
 const routerUser = require("express").Router();
 
 routerUser.post("/", handlerPostUser);
 
-routerUser.get("/", (req, res) => {
-  res.status(200).json("Obteniendo usuario");
-});
+routerUser.get("/", handlerGetUsers);
 
-routerUser.put("/", (req, res) => {
-  res.status(200).json("Modificicando usuario");
-});
+routerUser.put("/", handlerPutUsers);
 
 module.exports = routerUser;

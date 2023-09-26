@@ -1,11 +1,10 @@
-const userSchema = require("../models/users");
+const User = require("../models/users");
 
 const controllerPostUser = async ({ name, age, email }) => {
   if (!name || !age || !email) {
     return "Faltan datos";
   }
-  const newUser = userSchema({ name, age, email });
-  newUser.save();
+  const newUser = await User.create({ name, age, email });
 
   return newUser;
 };
