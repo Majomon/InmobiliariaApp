@@ -16,7 +16,6 @@ function Home() {
         </h1>
       </div>
       <Filter/>
-      <h2>Propiedades destacadas</h2>
       <ContainerProperty/>
     </div>
   );
