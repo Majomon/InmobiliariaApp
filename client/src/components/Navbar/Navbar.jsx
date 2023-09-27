@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const options = [
-  { name: "Home", to: "/" },
-  { name: "Detail", to: "/detail" },
+  { name: "Inicio", to: "/" },
+  { name: "Contacto", to: "/contact" },
 ];
 
 // eslint-disable-next-line react/prop-types

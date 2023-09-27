@@ -33,7 +33,7 @@ function App() {
       <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/contact" element={<Detail />} />
       </Routes>
     </div>
   );
