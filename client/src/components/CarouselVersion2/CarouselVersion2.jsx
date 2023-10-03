@@ -13,7 +13,7 @@ function CarouselVersion2({
             key={index}
             src={image}
             alt={`Image ${index + 1}`}
-            className={`absolute w-full h-full opacity-0 transition-opacity duration-500 ease-in-out ${
+            className={`absolute w-full h-full opacity-0 transition-opacity border rounded-sm duration-500 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : ""
             }`}
           />
@@ -24,8 +24,8 @@ function CarouselVersion2({
           <button
             key={index}
             onClick={() => handleImageClick(index)}
-            className={`w-3 h-3 rounded-full bg-white border-none m-0 cursor-pointer transition-all duration-300 ease-in-out ${
-              index === currentImageIndex ? "p-2 bg-gray-400" : ""
+            className={`w-3 h-3 rounded-full bg-white m-0 cursor-pointer transition-all duration-300 ease-in-out ${
+              index === currentImageIndex ? "p-2 bg-yellow-500 border border-black" : ""
             }`}
           />
         ))}

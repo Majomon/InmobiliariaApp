@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
 //import Carousel from "../components/CarouselVersion1/CarouselVersion1";
 import CarouselVersion2 from "../components/CarouselVersion2/CarouselVersion2";
+import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 
 function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  //const [dataAxios, setDataAxios] = useState(null); // Inicializa como null
+  const [dataAxios, setDataAxios] = useState(null); // Inicializa como null
   const [dataAxiosImages, setDataAxiosImages] = useState(null); // Inicializa como null
   const [selectedImage, setSelectedImage] = useState("");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -19,7 +20,7 @@ function Detail() {
       .then((response) => {
         if (response.status === 200) {
           const data = response.data;
-          //setDataAxios(data);
+          setDataAxios(data);
           setDataAxiosImages(data.images); // Asigna el arreglo de imágenes a dataAxios
           setSelectedImage(data.images[0]);
           setLoading(false);
@@ -36,21 +37,16 @@ function Detail() {
   const handleImageClick = (image) => {
     // Maneja el clic en una imagen pequeña
     setSelectedImage(image);
-    setCurrentImageIndex(image)
+    setCurrentImageIndex(image);
   };
 
   return (
-    <div>
+    <div className="bg-white dark:bg-black">
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          {/*           <Carousel
-            selectedImage={selectedImage}
-            dataAxiosImages={dataAxiosImages}
-            handleImageClick={handleImageClick}
-          /> */}
-
+        <div className="w-full h-full mt-16">
+          <DetailInfoTop dataAxios={dataAxios} />
           <CarouselVersion2
             handleImageClick={handleImageClick}
             currentImageIndex={currentImageIndex}
