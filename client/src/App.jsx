@@ -8,6 +8,7 @@ axios.defaults.baseURL = "http://localhost:9001";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Detail from "./pages/Detail";
+import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
       <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );
