@@ -1,43 +1,49 @@
 const Property = require("../../models/properties");
 
 const controllerPostProperty = async ({
-  name,
-  description,
-  address,
-  price,
-  images,
+  operation,
+  property,
+  environments,
   bedrooms,
   bathrooms,
   area,
   availability,
-  category,
+  name,
+  description,
+  address,
+  images,
+  price,
 }) => {
   if (
-    !name ||
-    !description ||
-    !address ||
-    !price ||
-    !images ||
+    !operation ||
+    !property ||
+    !environments ||
     !bedrooms ||
     !bathrooms ||
     !area ||
     !availability ||
-    !category
+    !name ||
+    !description ||
+    !address ||
+    !images ||
+    !price
   ) {
     return "Faltan datos";
   }
 
   const newProperty = await Property.create({
-    name,
-    description,
-    address,
-    price,
-    images,
+    operation,
+    property,
+    environments,
     bedrooms,
     bathrooms,
     area,
     availability,
-    category,
+    name,
+    description,
+    address,
+    images,
+    price,
   });
   return newProperty;
 };
