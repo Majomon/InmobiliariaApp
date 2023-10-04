@@ -14,6 +14,7 @@ const handlerPostProperty = async (req, res) => {
     name,
     description,
     address,
+    services,
     images,
     price,
   } = req.body;
@@ -32,6 +33,7 @@ const handlerPostProperty = async (req, res) => {
       name,
       description,
       address,
+      services,
       images,
       price,
     });

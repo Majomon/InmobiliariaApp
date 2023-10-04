@@ -75,6 +75,52 @@ const propertiesSchema = mongoose.Schema({
       required: true,
     },
   },
+  services: {
+    //Airea acondicionado
+    airConditioning: {
+      type: Boolean,
+    },
+    //Agua corriente
+    runningWater: {
+      type: Boolean,
+    },
+    //Pavimento
+    pavement: {
+      type: Boolean,
+    },
+    //Termotanque
+    waterHeater: {
+      type: String,
+    },
+    //Luz
+    light: {
+      type: Boolean,
+    },
+    //Cocina
+    kitchen: {
+      type: Boolean,
+    },
+    //Desague cloacal
+    sewageDrain: {
+      type: Boolean,
+    },
+    //Balcon
+    balcony: {
+      type: Boolean,
+    },
+    //Lavadero
+    laundry: {
+      type: Boolean,
+    },
+    //Patio
+    yard: {
+      type: Boolean,
+    },
+    //Vestidor
+    dressingRoom: {
+      type: Boolean,
+    },
+  },
   images: [
     {
       type: String,

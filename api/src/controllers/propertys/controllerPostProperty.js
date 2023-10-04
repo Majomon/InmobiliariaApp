@@ -13,6 +13,7 @@ const controllerPostProperty = async ({
   name,
   description,
   address,
+  services,
   images,
   price,
 }) => {
@@ -29,6 +30,7 @@ const controllerPostProperty = async ({
     !name ||
     !description ||
     !address ||
+    !services ||
     !images ||
     !price
   ) {
@@ -48,6 +50,7 @@ const controllerPostProperty = async ({
     name,
     description,
     address,
+    services,
     images,
     price,
   });
