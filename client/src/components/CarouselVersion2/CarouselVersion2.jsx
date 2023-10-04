@@ -6,7 +6,7 @@ function CarouselVersion2({
   currentImageIndex,
 }) {
   return (
-    <div className="w-full px-10 pl-16 h-[450px] relative flex flex-col items-center mt-2">
+    <div className="w-full h-[450px] relative flex flex-col items-center mt-2 shadow-md">
       <div className="w-full h-full">
         {dataAxiosImages.map((image, index) => (
           <img
@@ -19,7 +19,7 @@ function CarouselVersion2({
           />
         ))}
       </div>
-      <div className="absolute w-full ml-16 justify-center items-center bottom-2 flex space-x-4">
+      <div className="absolute w-full justify-center items-center bottom-2 flex space-x-4">
         {dataAxiosImages.map((_, index) => (
           <button
             key={index}

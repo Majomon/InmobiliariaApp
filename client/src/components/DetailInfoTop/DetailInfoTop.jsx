@@ -72,8 +72,8 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Ubicación */}
-      <div className="w-full h-full flex gap-2 mx-auto">
-        <div className="flex items-center gap-2 pl-16">
+      <div className="w-full h-full flex gap-2 px-16 ">
+        <div className="flex items-center gap-2">
           <h3>{dataAxios.operation}</h3>
           <HiArrowNarrowRight />
         </div>
@@ -90,8 +90,8 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Info extra del la publicacion */}
-      <div className="w-full h-full mx-auto flex justify-center items-center bg-white shadow-md">
-        <div className="w-7/12 h-[7rem] flex pl-16 py-4">
+      <div className="w-full h-full flex justify-center items-center bg-white shadow-md px-16">
+        <div className="w-7/12 h-[7rem] flex py-4">
           <div className="w-6/12 h-full">
             <h3 className="text-base font-bold">{dataAxios.name}</h3>
             <h4>
