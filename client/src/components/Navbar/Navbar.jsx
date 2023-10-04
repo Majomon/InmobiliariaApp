@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/logo-removebg-preview.webp";
 
 const options = [
   { name: "Inicio", to: "/" },
@@ -16,14 +17,14 @@ function Navbar({ theme, setTheme }) {
   };
 
   return (
-    <div className="w-full h-[4rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md z-10">
+    <div className="w-full h-[4.5rem] px-10 fixed flex justify-between items-center bg-white dark:bg-black shadow-md z-10">
       {/* Icono */}
       <div className="">
         <Link to="/">
           <img
-            className="w-16"
-            src="https://cdn-icons-png.flaticon.com/128/6279/6279463.png"
-            alt="chopper"
+            className="w-24"
+            src={Logo}
+            alt="Logo"
           />
         </Link>
       </div>

@@ -26,6 +26,10 @@ const propertiesSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  //Cochera
+  garage: {
+    type: Boolean,
+  },
   //Mts cuadrados
   area: {
     type: Number,
