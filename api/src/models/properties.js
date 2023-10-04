@@ -28,7 +28,7 @@ const propertiesSchema = mongoose.Schema({
   },
   //Cochera
   garage: {
-    type: Boolean,
+    type: Number,
   },
   //Mts cuadrados
   area: {
@@ -37,6 +37,11 @@ const propertiesSchema = mongoose.Schema({
   //Disponibilidad
   availability: {
     type: Boolean,
+    required: true,
+  },
+  //Estado
+  state: {
+    type: String,
     required: true,
   },
   name: {

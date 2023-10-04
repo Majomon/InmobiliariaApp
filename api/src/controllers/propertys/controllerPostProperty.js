@@ -8,6 +8,7 @@ const controllerPostProperty = async ({
   bathrooms,
   area,
   garage,
+  state,
   availability,
   name,
   description,
@@ -23,6 +24,7 @@ const controllerPostProperty = async ({
     !bathrooms ||
     !area ||
     !garage ||
+    !state ||
     !availability ||
     !name ||
     !description ||
@@ -41,6 +43,7 @@ const controllerPostProperty = async ({
     bathrooms,
     area,
     garage,
+    state,
     availability,
     name,
     description,

@@ -22,25 +22,33 @@ function DetailInfoBot({ dataAxios }) {
             Detalles de la propiedad
           </h2>
           <div className="px-10 py-2">
-            <div>
+            <div className="flex justify-between">
               <h3>Operación</h3>
               <p>{dataAxios.operation}</p>
             </div>
-            <div>
+            <div className="flex justify-between">
               <h3>Propiedad</h3>
               <p>{dataAxios.property}</p>
             </div>
-            <div>
-              <h3>Operación</h3>
+            <div className="flex justify-between">
+              <h3>Provincia</h3>
               <p>{dataAxios.address.province}</p>
             </div>
-            <div>
-              <h3>Operación</h3>
+            <div className="flex justify-between">
+              <h3>Zona</h3>
               <p>{dataAxios.address.zone}</p>
             </div>
-            <div>
-              <h3>Operación</h3>
+            <div className="flex justify-between">
+              <h3>Dirección</h3>
               <p>{dataAxios.address.street}</p>
+            </div>
+            <div className="flex justify-between">
+              <h3>Baños</h3>
+              <p>{dataAxios.bathrooms}</p>
+            </div>
+            <div className="flex justify-between">
+              <h3>Habitaciones</h3>
+              <p>{dataAxios.bedrooms}</p>
             </div>
           </div>
         </div>
