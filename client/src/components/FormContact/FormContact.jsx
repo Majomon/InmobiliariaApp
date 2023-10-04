@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "../../assets/logo-removebg-preview.png";
+import WhatApp from "../../assets/whatsapp.png";
 
 function FormContact() {
   const [disabled, setDisabled] = useState(true);
@@ -10,10 +12,25 @@ function FormContact() {
     phone: "",
     message: "",
   });
+  const URL_BASE = "http://localhost:3000";
+  const location = useLocation();
 
   const handlerChange = (e) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
+  };
+
+  const handleWhatsAppShare = () => {
+    // URL actual de tu página
+    const currentURL = `${URL_BASE}${location.pathname}`;
+
+    // Crea el enlace de WhatsApp con la URL actual como parámetro
+    const whatsappURL = `https://api.whatsapp.com/send?text= Hola, te comparto esta ficha: ${encodeURIComponent(
+      currentURL
+    )}`;
+
+    // Abre la ventana de WhatsApp para compartir la URL
+    window.open(whatsappURL, "_blank");
   };
 
   useEffect(() => {
@@ -96,13 +113,17 @@ function FormContact() {
             disabled={disabled}
             className={`w-full mt-4 p-2 rounded-xl shadow-md transition-all duration-300 ease-out ${
               disabled
-                ? "bg-gray-400"
+                ? "bg-gray-400 font-bold"
                 : "bg-yellow-400 text-white font-bold text-lg border hover:scale-105"
             }`}
           >
             Enviar
           </button>
         </form>
+        <div className="w-full h-[6rem] mt-2 flex flex-col justify-center gap-2">
+          <h3>Compartir</h3>
+          <img src={WhatApp} onClick={handleWhatsAppShare} alt="whatapp" className="w-[40px] cursor-pointer"/>
+        </div>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ function Navbar({ theme, setTheme }) {
       <div className="">
         <Link to="/">
           <img
-            className="w-24"
+            className="w-16"
             src={Logo}
             alt="Logo"
           />
