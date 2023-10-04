@@ -47,8 +47,8 @@ function FormContact() {
   }, [inputForm]);
 
   return (
-    <div className="w-3/12 h-[31.4rem] mt-2 bg-white shadow-md">
-      <div className="p-4">
+    <div className="w-4/12 h-[31.4rem] mt-2 mr-16 bg-white shadow-md border rounded-lg">
+      <div className="p-4 sticky">
         <h2 className="">Contacta al vendedor</h2>
         <div className="w-full flex gap-4">
           <img src={Logo} alt="logo" className="w-[80px] " />
@@ -122,7 +122,12 @@ function FormContact() {
         </form>
         <div className="w-full h-[6rem] mt-2 flex flex-col justify-center gap-2">
           <h3>Compartir</h3>
-          <img src={WhatApp} onClick={handleWhatsAppShare} alt="whatapp" className="w-[40px] cursor-pointer"/>
+          <img
+            src={WhatApp}
+            onClick={handleWhatsAppShare}
+            alt="whatapp"
+            className="w-[40px] cursor-pointer"
+          />
         </div>
       </div>
     </div>

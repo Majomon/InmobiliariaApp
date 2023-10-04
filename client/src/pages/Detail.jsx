@@ -6,6 +6,8 @@ import Spinner from "../components/Spinner/Spinner";
 import CarouselVersion2 from "../components/CarouselVersion2/CarouselVersion2";
 import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
+import Filter from "../components/Filter/Filter";
+import DetailInfoBot from "../components/DetailInfoBot/DetailInfoBot";
 
 function Detail() {
   const { id } = useParams();
@@ -48,7 +50,7 @@ function Detail() {
       ) : (
         <div className="w-full h-full mt-16 flex flex-col">
           <DetailInfoTop dataAxios={dataAxios} />
-          <div className="w-full flex mt-4">
+          <div className="w-full h-full flex mt-4">
             <div className="w-8/12 h-full pl-16 pr-4">
               <CarouselVersion2
                 handleImageClick={handleImageClick}
@@ -62,6 +64,7 @@ function Detail() {
             </div>
             <FormContact />
           </div>
+          <DetailInfoBot dataAxios={dataAxios} />
         </div>
       )}
     </div>
