@@ -48,7 +48,7 @@ function Detail() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="w-full h-full mt-16 flex flex-col">
+        <div className="w-full h-full mt-16 flex flex-col ">
           <DetailInfoTop dataAxios={dataAxios} />
           <div className="w-full h-full flex mt-4">
             <div className="w-8/12 h-full pl-16 pr-4">
@@ -61,10 +61,10 @@ function Detail() {
               <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer ">
                 <button>Quiero que me llamen</button>
               </div>
+              <DetailInfoBot dataAxios={dataAxios} />
             </div>
             <FormContact />
           </div>
-          <DetailInfoBot dataAxios={dataAxios} />
         </div>
       )}
     </div>

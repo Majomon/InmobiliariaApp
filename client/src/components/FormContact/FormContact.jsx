@@ -47,7 +47,13 @@ function FormContact() {
   }, [inputForm]);
 
   return (
-    <div className="w-4/12 h-[31.4rem] mt-2 mr-16 bg-white shadow-md border rounded-lg">
+    <div
+      className="w-4/12 h-[31rem] mt-2 mr-16 bg-white shadow-md border rounded-lg"
+      style={{
+        position: "sticky",
+        top: "100px", // Ajusta esta cantidad según tus necesidades
+      }}
+    >
       <div className="p-4 sticky">
         <h2 className="">Contacta al vendedor</h2>
         <div className="w-full flex gap-4">
