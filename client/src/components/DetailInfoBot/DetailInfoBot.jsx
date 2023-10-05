@@ -36,7 +36,6 @@ function DetailInfoBot({ dataAxios }) {
         </div>
       </div>
       {/* Detalles de la propiedad */}
-
       <div className="h-full shadow-md border rounded-lg my-4">
         <h2 className="px-4 py-2 font-bold text-base">
           Detalles de la propiedad
@@ -98,7 +97,7 @@ function DetailInfoBot({ dataAxios }) {
                   <img
                     src={serviceImages[serviceKey].img}
                     alt={serviceImages[serviceKey].value}
-                    className="w-[60px]"
+                    className="w-[50px]"
                   />
                   <p className="text-xs">{serviceImages[serviceKey].value}</p>
                 </div>
@@ -107,7 +106,6 @@ function DetailInfoBot({ dataAxios }) {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
