@@ -1,8 +1,8 @@
 const Property = require("../../models/properties");
 
-const controllerGetPropertyID = async (id) => {
+const controllerGetId = async (id) => {
   const property = await Property.findById(id)
   return property;
 };
 
-module.exports = controllerGetPropertyID;
+module.exports = controllerGetId;
