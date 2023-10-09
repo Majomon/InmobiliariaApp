@@ -7,13 +7,21 @@ import img4 from "../assets/img/4.webp";
 import CarouselHome from "../components/CarouselHome/CarouselHome";
 import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
 import Filter from "../components/Filter/Filter";
+import { useDispatch } from "react-redux";
+import { getAllProperties } from "../redux/actions";
 
 function Home() {
   const images = [img1, img2, img3, img4];
   const [loading, setLoading] = useState(true);
   const [dataAxios, setDataAxios] = useState();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(getAllProperties());
+  }, []);
+
+  /*   useEffect(() => {
     setTimeout(() => {
       axios
         .get("/properties")
@@ -31,7 +39,7 @@ function Home() {
           setLoading(false);
         });
     }, 1500);
-  }, []);
+  }, []); */
 
   return (
     <div className="w-full h-full py-1 mt-16">
@@ -39,7 +47,7 @@ function Home() {
       <div className="relative">
         <Filter dataAxios={dataAxios} />
       </div>
-      <ContainerProperty dataAxios={dataAxios} loading={loading} />
+      <ContainerProperty />
     </div>
   );
 }
