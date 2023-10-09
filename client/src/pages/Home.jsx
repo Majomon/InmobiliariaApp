@@ -1,22 +1,21 @@
 import imgHome from "../assets/home.avif";
 import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
-import Filter from "../components/Filter/Filter"
+import Filter from "../components/Filter/Filter";
+import img1 from "../assets/img/1.webp";
+import img2 from "../assets/img/2.webp";
+import img3 from "../assets/img/3.webp";
+import img4 from "../assets/img/4.webp";
+import CarouselHome from "../components/CarouselHome/CarouselHome";
 
 function Home() {
+  const images = [img1, img2, img3, img4];
   return (
     <div className="w-full h-full py-1 mt-16">
-      <img
-        className="w-full h-[30rem] border-b-4 border-red-500"
-        src={imgHome}
-        alt="home"
-      />
-      <div className="w-11/12 mx-auto">
-        <h1 className="w-4/12 px-4 text-2xl font-bold relative top-[-35px] text-white bg-red-500 rounded-sm">
-          Buscador de propiedades
-        </h1>
+      <CarouselHome images={images} />
+      <div className="relative">
+        <Filter />
       </div>
-      <Filter/>
-      <ContainerProperty/>
+      <ContainerProperty />
     </div>
   );
 }

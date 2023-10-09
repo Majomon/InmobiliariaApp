@@ -1,9 +1,9 @@
 function Filter() {
   return (
-    <div className="w-11/12 mx-auto">
-      <form className="w-full px-10 flex flex-wrap justify-between items-center">
+    <div className="w-full absolute bottom-0 bg-black opacity-70">
+      <form className="w-11/12 mx-auto px-10 flex flex-wrap justify-between items-center">
         <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Operación
           </label>
           <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
@@ -13,7 +13,7 @@ function Filter() {
           </select>
         </div>
         <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Tipo
           </label>
           <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
@@ -23,7 +23,7 @@ function Filter() {
           </select>
         </div>
         <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Zona
           </label>
           <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
@@ -33,7 +33,7 @@ function Filter() {
           </select>
         </div>
         <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Barrio
           </label>
           <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
@@ -43,7 +43,7 @@ function Filter() {
           </select>
         </div>
         <div className="w-2/12 py-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-white mb-1">
             Ambientes
           </label>
           <select className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300">
