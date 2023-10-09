@@ -6,7 +6,7 @@ import CarouselVersion2 from "../components/CarouselVersion2/CarouselVersion2";
 import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
 import DetailInfoBot from "../components/DetailInfoBot/DetailInfoBot";
-import Footer from "../components/Footer/Footer"
+import Footer from "../components/Footer/Footer";
 
 function Detail() {
   const { id } = useParams();
@@ -64,7 +64,6 @@ function Detail() {
             </div>
             <FormContact />
           </div>
-          <Footer/>
         </div>
       )}
     </div>

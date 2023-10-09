@@ -7,6 +7,7 @@ axios.defaults.baseURL = "https://inmobiliaria-api-green.vercel.app";
 // Pages
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer"
 import Detail from "./pages/Detail";
 import Contact from "./pages/Contact";
 import { useEffect, useState } from "react";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
