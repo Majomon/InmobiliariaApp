@@ -1,32 +1,7 @@
-import { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
-import axios from "axios";
 import PropertyCard from "../PropertyCard/PropertyCard";
+import Spinner from "../Spinner/Spinner";
 
-function ContainerProperty() {
-  const [loading, setLoading] = useState(true);
-  const [dataAxios, setDataAxios] = useState();
-
-  useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get("/properties")
-        .then((response) => {
-          if (response.status === 200) {
-            const data = response.data;
-            setDataAxios(data);
-            setLoading(false);
-          } else {
-            throw new Error("La solicitud no fue exitosa.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al obtener propiedades:", error);
-          setLoading(false);
-        });
-    }, 1500);
-  }, []);
-
+function ContainerProperty({ loading, dataAxios }) {
   return (
     <div>
       {loading ? (
