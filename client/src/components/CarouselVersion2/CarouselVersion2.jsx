@@ -37,7 +37,6 @@ function CarouselVersion2({ handleImageClick, currentImageIndex }) {
 }
 
 CarouselVersion2.propTypes = {
-  dataAxiosImages: PropTypes.array.isRequired,
   handleImageClick: PropTypes.func.isRequired,
   currentImageIndex: PropTypes.number.isRequired,
 };

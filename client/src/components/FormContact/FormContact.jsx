@@ -4,6 +4,7 @@ import Logo from "../../assets/logo-removebg-preview.png";
 import WhatApp from "../../assets/whatsapp.png";
 import { useDispatch } from "react-redux";
 import { postResend } from "../../redux/actions";
+import { Toaster, toast } from "sonner";
 
 function FormContact() {
   const dispatch = useDispatch();
@@ -22,7 +23,6 @@ function FormContact() {
     message: "",
   });
 
-  
   const handleWhatsAppShare = () => {
     const whatsappURL = `https://api.whatsapp.com/send?text= Hola, te comparto esta ficha: ${encodeURIComponent(
       currentURL
@@ -52,18 +52,34 @@ function FormContact() {
   const handlerSubmit = (event) => {
     event.preventDefault();
 
+    if (disabled) {
+      toast.error(
+        "Por favor, complete todos los campos antes de enviar el formulario",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
+      return;
+    }
+
     const formData = {
       name: inputForm.name,
       email: inputForm.email,
       phone: inputForm.phone,
       message: inputForm.message,
-      url: currentURL, // Agrega la URL directamente aquí
+      url: currentURL,
     };
     dispatch(postResend(formData));
   };
 
   return (
     <div className="w-4/12 h-[100vh] mt-2 mr-16 bg-white sticky top-[80px]">
+      <Toaster />
       <div className="p-4 shadow-md border rounded-lg ">
         <h2 className="">Contacta al vendedor</h2>
         <div className="w-full flex gap-4">
@@ -126,7 +142,6 @@ function FormContact() {
           />
           <button
             type="submit"
-            disabled={disabled}
             className={`w-full mt-4 p-2 rounded-xl shadow-md transition-all duration-300 ease-out ${
               disabled
                 ? "bg-gray-400 font-bold"

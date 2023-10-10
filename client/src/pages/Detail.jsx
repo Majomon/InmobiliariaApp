@@ -8,6 +8,7 @@ import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
 import Spinner from "../components/Spinner/Spinner";
 import { clearDetailsState, getPropertiesId } from "../redux/actions";
+import { Toaster, toast } from "sonner";
 
 function Detail() {
   const { id } = useParams();
@@ -46,6 +47,8 @@ function Detail() {
 
   return (
     <div className="bg-white dark:bg-black">
+      <Toaster />
+
       {property.name ? (
         <div className="w-full h-full mt-16 flex flex-col ">
           <DetailInfoTop dataAxios={property} />
@@ -56,7 +59,9 @@ function Detail() {
                 currentImageIndex={currentImageIndex}
               />
               <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer ">
-                <button>Quiero que me llamen</button>
+                <button onClick={() => toast("My first toast")}>
+                  Quiero que me llamen
+                </button>
               </div>
               <DetailInfoBot dataAxios={property} />
             </div>
