@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const controllerPostProperty = async (formData) => {
   const { name, email, phone, message, url } = formData;
-  if (!name || !email || !phone || !message) {
+  if (!name || !email || !phone || !message ||! url) {
     return "Faltan datos";
   }
   const htmlContent = `
@@ -48,7 +48,10 @@ const controllerPostProperty = async (formData) => {
             <h1>Mensaje de ${name}</h1>
             <p>Email: ${email}</p>
             <p>Teléfono: ${phone}</p>
-            <p>URL: ${url}</p>
+            <div>
+              <p>Propiedad en la que se pudo haber interesado: </p>
+              <p>${url}</p>
+            </div>
             <div class="message">
                 <p>Mensaje:</p>
                 <p>${message}</p>

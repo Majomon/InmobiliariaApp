@@ -1,7 +1,7 @@
 const controllerPostResend = require("../../controllers/resend/controllerPostResend")
 
 const handlerPostResend = async (req, res) => {
-  const { name, email, phone, message,propertyId } = req.body;
+  const { name, email, phone, message,url } = req.body;
 
   try {
     const newProperty = await controllerPostResend({
@@ -9,7 +9,7 @@ const handlerPostResend = async (req, res) => {
       email,
       phone,
       message,
-      propertyId
+      url
     });
     res.status(200).json(newProperty);
   } catch (error) {
