@@ -9,16 +9,17 @@ import ContainerProperty from "../components/ContainerProperty/ContainerProperty
 import Filter from "../components/Filter/Filter";
 import { useDispatch } from "react-redux";
 import { getAllProperties } from "../redux/actions";
+import Spinner from "../components/Spinner/Spinner";
 
 function Home() {
   const images = [img1, img2, img3, img4];
   const [loading, setLoading] = useState(true);
-  const [dataAxios, setDataAxios] = useState();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProperties());
+    setLoading(false);
   }, []);
 
   /*   useEffect(() => {
@@ -45,7 +46,7 @@ function Home() {
     <div className="w-full h-full py-1 mt-16">
       <CarouselHome images={images} />
       <div className="relative">
-        <Filter dataAxios={dataAxios} />
+        <Filter />
       </div>
       <ContainerProperty />
     </div>

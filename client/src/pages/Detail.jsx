@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Error from "../assets/pageNotFound/5203299.jpg";
 import CarouselVersion2 from "../components/CarouselVersion2/CarouselVersion2";
 import DetailInfoBot from "../components/DetailInfoBot/DetailInfoBot";
 import DetailInfoTop from "../components/DetailInfoTop/DetailInfoTop";
 import FormContact from "../components/FormContact/FormContact";
 import Spinner from "../components/Spinner/Spinner";
 import { clearDetailsState, getPropertiesId } from "../redux/actions";
-import Error from "../assets/pageNotFound/5203299.jpg";
 
 function Detail() {
   const { id } = useParams();
@@ -29,7 +29,7 @@ function Detail() {
       });
 
     return () => {
-      dispatch(clearDetailsState( ));
+      dispatch(clearDetailsState());
     };
   }, [id]);
 

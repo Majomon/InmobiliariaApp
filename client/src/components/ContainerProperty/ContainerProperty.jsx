@@ -16,7 +16,7 @@ function ContainerProperty() {
               <PropertyCard key={property._id} property={property} />
             ))
           ) : (
-            <p>No se encontraron datos de propiedades.</p>
+            <Spinner/>
           )}
         </div>
       </div>
