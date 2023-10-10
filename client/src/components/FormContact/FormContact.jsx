@@ -13,7 +13,7 @@ function FormContact() {
 
   //Direccion completa de la URL
   const location = useLocation();
-  const URL_BASE = "http://localhost:5173";
+  const URL_BASE = "https://inmobiliaria-client.vercel.app";
   const currentURL = `${URL_BASE}${location.pathname}`;
 
   const [inputForm, setInputForm] = useState({

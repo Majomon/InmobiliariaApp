@@ -33,7 +33,7 @@ export const getPropertiesId = (id) => {
 export const postResend = (formData) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:8080/resend", formData);
+      const response = await axios.post("/resend", formData);
       dispatch({ type: POST_RESEND, payload: response });
     } catch (error) {
       return [];

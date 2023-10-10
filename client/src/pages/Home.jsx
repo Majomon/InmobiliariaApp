@@ -9,7 +9,6 @@ import ContainerProperty from "../components/ContainerProperty/ContainerProperty
 import Filter from "../components/Filter/Filter";
 import { useDispatch } from "react-redux";
 import { getAllProperties } from "../redux/actions";
-import Spinner from "../components/Spinner/Spinner";
 
 function Home() {
   const images = [img1, img2, img3, img4];
