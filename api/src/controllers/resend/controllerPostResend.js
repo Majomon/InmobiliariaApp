@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const controllerPostProperty = async (formData) => {
   const { name, email, phone, message, url } = formData;
-  if (!name || !email || !phone || !message ||! url) {
+  if (!name || !email || !phone || !message || !url) {
     return "Faltan datos";
   }
   const htmlContent = `
@@ -63,7 +63,7 @@ const controllerPostProperty = async (formData) => {
 
   const data = await resend.emails.send({
     from: "Acme <onboarding@resend.dev>",
-    to: ["mauri.monzon91@gmail.com"],
+    to: ["parcincinternacional@gmail.com"],
     subject: `Mensaje de: ${name}`,
     html: htmlContent,
   });
