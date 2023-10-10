@@ -14,6 +14,7 @@ function PropertyCard(properties) {
     price,
     bedrooms,
     bathrooms,
+    environments,
     area,
   } = properties.property;
 
@@ -30,26 +31,28 @@ function PropertyCard(properties) {
             {address.street} - {address.zone}
           </h3>
 
-          <h4 className="text-blue-400 py-4">
+          <h4 className="text-blue-400 py-4 text-xl">
             <strong>Precio:</strong> ${price}
           </h4>
 
           <div className="grid grid-cols-3">
             <div className="flex flex-col justify-center items-center">
               <img src={Superficie} className="w-6" />
-              <p>{area}</p>
+              <p className="text-sm text-gray-500">{area} m²</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img src={Baño} className="w-6" />
-              <p>
+              <p className="text-sm text-gray-500">
                 {bathrooms} {bathrooms > 1 ? "Baños" : "Baño"}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img src={Habitacion} className="w-6" />
               <div>
-                <p>
-                  {bedrooms} {bedrooms > 1 ? "Habitaciones" : "Habitación"}{" "}
+                <p className="text-sm text-gray-500">
+                  {environments === 1
+                    ? "Monoambiente"
+                    : `${environments} Amb - ${bedrooms} Dorm`}
                 </p>
               </div>
             </div>
