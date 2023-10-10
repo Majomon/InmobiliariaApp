@@ -10,7 +10,7 @@ function ContainerProperty() {
       <div className="w-full mx-auto">
         <h2 className="text-center py-4">Propiedades destacadas</h2>
 
-        <div className="flex flex-wrap justify-center">
+        <div className="w-11/12 mx-auto grid grid-cols-3">
           {properties.length > 0 ? (
             properties.map((property) => (
               <PropertyCard key={property._id} property={property} />
