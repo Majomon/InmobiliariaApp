@@ -2,34 +2,32 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Logo from "../../assets/logo-removebg-preview.png";
 import WhatApp from "../../assets/whatsapp.png";
+import { useDispatch } from "react-redux";
+import { postResend } from "../../redux/actions";
 
 function FormContact() {
+  const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
+
+  //Direccion completa de la URL
+  const location = useLocation();
+  const URL_BASE = "http://localhost:5173";
+  const currentURL = `${URL_BASE}${location.pathname}`;
+
   const [inputForm, setInputForm] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
-  const URL_BASE = "http://localhost:3000";
-  const location = useLocation();
 
-  const handlerChange = (e) => {
-    const { name, value } = e.target;
-    setInputForm({ ...inputForm, [name]: value });
-  };
-
+  
   const handleWhatsAppShare = () => {
-    // URL actual de tu página
-    const currentURL = `${URL_BASE}${location.pathname}`;
-
-    // Crea el enlace de WhatsApp con la URL actual como parámetro
     const whatsappURL = `https://api.whatsapp.com/send?text= Hola, te comparto esta ficha: ${encodeURIComponent(
       currentURL
     )}`;
 
-    // Abre la ventana de WhatsApp para compartir la URL
     window.open(whatsappURL, "_blank");
   };
 
@@ -46,6 +44,24 @@ function FormContact() {
     }
   }, [inputForm]);
 
+  const handlerChange = (e) => {
+    const { name, value } = e.target;
+    setInputForm({ ...inputForm, [name]: value });
+  };
+
+  const handlerSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = {
+      name: inputForm.name,
+      email: inputForm.email,
+      phone: inputForm.phone,
+      message: inputForm.message,
+      url: currentURL, // Agrega la URL directamente aquí
+    };
+    dispatch(postResend(formData));
+  };
+
   return (
     <div className="w-4/12 h-[100vh] mt-2 mr-16 bg-white sticky top-[80px]">
       <div className="p-4 shadow-md border rounded-lg ">
@@ -58,7 +74,7 @@ function FormContact() {
             <h2 className="text-lg ">test@test.com</h2>
           </div>
         </div>
-        <form className="pt-2">
+        <form className="pt-2" onSubmit={handlerSubmit}>
           <input
             type="text"
             name="name"
