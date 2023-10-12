@@ -15,10 +15,8 @@ function Detail({ theme }) {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState("");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const dispatch = useDispatch();
   const property = useSelector((state) => state.details);
-
   useEffect(() => {
     dispatch(getPropertiesId(id))
       .then(() => {
@@ -39,12 +37,10 @@ function Detail({ theme }) {
     setSelectedImage(image);
     setCurrentImageIndex(image);
   };
-
   // Verifica si los datos están cargados antes de renderizar
   if (loading) {
     return <Spinner />;
   }
-
   return (
     <div className="bg-white dark:bg-black">
       <Toaster />
@@ -56,9 +52,8 @@ function Detail({ theme }) {
               <CarouselVersion2
                 handleImageClick={handleImageClick}
                 currentImageIndex={currentImageIndex}
-                theme={theme}
               />
-              <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer ">
+              <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
                 <button onClick={() => toast("My first toast")}>
                   Quiero que me llamen
                 </button>

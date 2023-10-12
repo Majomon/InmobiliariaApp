@@ -4,7 +4,6 @@ import Linkedin from "../../assets/redes/linkedin.png";
 import LogoDark from "../../assets/darkMode.png";
 import LogoLight from "../../assets/lightMode.png";
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 function Footer({ theme }) {
   const email = "test@test.com";
