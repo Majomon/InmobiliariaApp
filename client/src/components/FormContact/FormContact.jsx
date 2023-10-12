@@ -109,7 +109,7 @@ function FormContact({ theme }) {
             value={inputForm.name}
             onChange={handlerChange}
             placeholder="Nombre"
-            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -121,7 +121,7 @@ function FormContact({ theme }) {
             value={inputForm.email}
             onChange={handlerChange}
             placeholder="Email"
-            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -133,7 +133,7 @@ function FormContact({ theme }) {
             value={inputForm.phone}
             onChange={handlerChange}
             placeholder="Teléfono"
-            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
@@ -146,7 +146,7 @@ function FormContact({ theme }) {
             value={inputForm.message}
             onChange={handlerChange}
             placeholder="Vi esta propiedad y me gustaria que me contacten"
-            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-400 focus:border-yellow-500 ${
+            className={`w-full h-full my-1 py-1 border-b-4 dark:bg-black dark:text-white border-gray-100 focus:border-yellow-500 ${
               isFocused ? "outline-none" : ""
             }`}
             onFocus={() => setIsFocused(true)}
