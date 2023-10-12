@@ -48,10 +48,9 @@ function Detail({ theme }) {
   return (
     <div className="bg-white dark:bg-black">
       <Toaster />
-
       {property.name ? (
         <div className="w-full h-full mt-16 flex flex-col ">
-          <DetailInfoTop dataAxios={property} theme={theme} />
+          <DetailInfoTop dataAxios={property} />
           <div className="w-full flex mt-4">
             <div className="w-8/12 h-full pl-16 pr-4">
               <CarouselVersion2
