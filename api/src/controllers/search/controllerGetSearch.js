@@ -2,7 +2,7 @@ const Property = require("../../models/properties");
 
 const controllerGetSearch = async (dataQuery) => {
   // Realiza una búsqueda inicial para obtener todos los datos
-  const allProperties = await Property.find({});
+  const allProperties = await Property.find();
   
   const filteredProperties = allProperties.filter((property) => {
     return (
