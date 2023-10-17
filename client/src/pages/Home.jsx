@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import img1 from "../assets/img/1.webp";
 import img2 from "../assets/img/2.webp";
 import img3 from "../assets/img/3.webp";
@@ -7,7 +7,6 @@ import img4 from "../assets/img/4.webp";
 import CarouselHome from "../components/CarouselHome/CarouselHome";
 import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
 import Filter from "../components/Filter/Filter";
-import { useDispatch } from "react-redux";
 import { getAllProperties } from "../redux/actions";
 
 function Home() {

@@ -1,8 +1,8 @@
 import { GET_ALL_PROPERTIES } from "./actions";
 import { GET_PROPERTY_ID } from "./actions";
-import { CLEAR_DETAILS_STATE } from "./actions";
-
 import { GET_SEARCH_FILTER } from "./actions";
+
+import { CLEAR_DETAILS_STATE } from "./actions";
 import { CLEAR_SEARCH_STATE } from "./actions";
 
 const initialState = {

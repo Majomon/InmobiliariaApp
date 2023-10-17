@@ -4,7 +4,6 @@ import Spinner from "../Spinner/Spinner";
 
 function ContainerProperty() {
   const properties = useSelector((state) => state.propiedades);
-
   return (
     <div className="w-full mx-auto dark:bg-black border-t dark:border-white relative">
       <h2 className="text-center pt-4 font-bold text-4xl dark:text-white">

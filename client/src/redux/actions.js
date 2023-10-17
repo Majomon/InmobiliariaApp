@@ -44,19 +44,17 @@ export const postResend = (formData) => {
 };
 
 // Filtro
-export const getSearchFilter = (query) => {
+export const getSearchFilter = (data) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`/search${query}`);
+      const response = await axios.post(`/search`, data);
+      console.log(response.data);
       dispatch({ type: GET_SEARCH_FILTER, payload: response.data });
     } catch (error) {
       return [];
     }
   };
 };
-
-
-
 
 // Acción que permite limpiar el estado de detalles
 export const clearDetailsState = () => {

@@ -1,7 +1,7 @@
 const controllerGetSearch = require("../../controllers/search/controllerGetSearch");
 
 const handlerGetSearch = async (req, res) => {
-  const { operation, typeProperty, province, zone, bedrooms } = req.query;
+  const { operation, typeProperty, province, zone, bedrooms } = req.body;
   const responseData = {
     operation,
     typeProperty,
