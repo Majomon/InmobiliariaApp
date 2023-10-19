@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import img1 from "../assets/img/1.webp";
 import img2 from "../assets/img/2.webp";
 import img3 from "../assets/img/3.webp";
@@ -12,6 +12,7 @@ import { getAllProperties } from "../redux/actions";
 function Home() {
   const images = [img1, img2, img3, img4];
   const dispatch = useDispatch();
+  const properties = useSelector((state) => state.propiedades);
 
   useEffect(() => {
     dispatch(getAllProperties());
@@ -46,7 +47,7 @@ function Home() {
       <h2 className="text-center pt-4 font-bold text-4xl  dark:bg-black dark:text-white">
         Todas las propiedades
       </h2>
-      <ContainerProperty />
+      <ContainerProperty properties={properties} />
     </div>
   );
 }

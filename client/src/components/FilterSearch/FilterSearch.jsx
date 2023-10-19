@@ -50,8 +50,8 @@ function FilterSearch() {
   };
 
   return (
-    <div className="h-full p-6 m-6 border border-gray-300 rounded-md sticky top-[120px]">
-      <form>
+    <div className="w-[20rem] h-[25rem] flex justify-center items-center my-8 border border-gray-300 rounded-md sticky top-[100px]">
+      <form className="w-full mx-4">
         <div className="w-full py-2">
           <select
             className="block w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-300 opacity-100"

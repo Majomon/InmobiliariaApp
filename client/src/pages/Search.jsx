@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getSearchFilter } from "../redux/actions";
-import FilterSearch from "../components/FilterSearch/FilterSearch";
 import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
+import FilterSearch from "../components/FilterSearch/FilterSearch";
+import { getSearchFilter } from "../redux/actions";
 
 function Search({ theme }) {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const dispatch = useDispatch();
-  const searchData = useSelector((state) => state.search);
+  const properties = useSelector((state) => state.search);
 
   // Obtiene los valores de los parámetros de consulta de la URL
   const operation = queryParams.get("operation");
@@ -31,10 +31,10 @@ function Search({ theme }) {
   }, [location.search]);
 
   return (
-    <div className="w-full h-full mt-[72px]">
-      <div className="flex">
+    <div className="w-full h-full mt-[72px] dark:bg-black">
+      <div className="w-11/12 mx-auto flex">
         <FilterSearch />
-        <ContainerProperty/>
+        <ContainerProperty properties={properties} />
       </div>
       {/*       <div className="h-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

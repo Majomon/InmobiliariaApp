@@ -80,12 +80,12 @@ function Footer({ theme }) {
                 Inicio
               </h3>
             </NavLink>
-            <NavLink to={"/alquiler"}>
+            <NavLink to={"/search?operation=Alquiler"}>
               <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Alquiler
               </h3>
             </NavLink>
-            <NavLink to={"/venta"}>
+            <NavLink to={"/search?operation=Venta"}>
               <h3 className="pl-2 my-2 text-gray-400 hover:text-black  dark:hover:text-gray-100">
                 Venta
               </h3>
