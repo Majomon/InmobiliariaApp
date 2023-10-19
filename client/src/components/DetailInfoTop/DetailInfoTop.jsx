@@ -5,7 +5,7 @@ function DetailInfoTop({ dataAxios }) {
   return (
     <div className="w-full h-full">
       {/* Info del vendedor o inmobiliaria */}
-      <div className="hidden lg:flex w-full h-[3.5rem]  justify-end gap-6 px-10">
+      <div className="hidden md:flex w-full h-[3.5rem]  justify-end gap-6 px-10">
         <div className="flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Ubicación */}
-      <div className="w-full h-full grid grid-cols-2 px-8 lg:px-16 mt-2 lg:flex lg:gap-2">
+      <div className="w-full h-full grid grid-cols-2 px-8 lg:px-16 mt-2 md:flex md:gap-2">
         <div className="flex items-center gap-2">
           <h3 className="">{dataAxios.operation}</h3>
           <HiArrowNarrowRight />
@@ -89,8 +89,8 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Info extra del la publicacion */}
-      <div className="w-full h-full flex flex-col justify-center items-center bg-white shadow-md px-8 lg:px-16 dark:bg-black border-b-2 border-gray-100">
-        <div className="w-full h-full lg:w-7/12 lg:h-[7rem] flex flex-col lg:flex-row">
+      <div className="w-full h-full py-4 flex flex-col md:flex-row justify-center items-center bg-white shadow-md px-8 lg:px-16 dark:bg-black border-b-2 border-gray-100">
+        <div className="w-full h-full lg:w-7/12 lg:h-[7rem] flex flex-col md:flex-row">
           <div className="w-full lg:w-6/12 h-full py-2">
             <h3 className="text-base font-bold dark:text-white">
               {dataAxios.name}
@@ -121,8 +121,8 @@ function DetailInfoTop({ dataAxios }) {
             )}
           </div>
         </div>
-        <div className="w-full h-0 lg:w-0 lg:h-[5rem] border border-gray-400"></div>
-        <div className="w-full lg:w-5/12 h-[8rem] lg:h-[7rem] flex justify-between items-center">
+        <div className="w-full h-0 md:w-0 md:h-[7rem] border border-gray-400"></div>
+        <div className="w-full lg:w-5/12 h-[8rem] lg:h-[7rem] flex justify-between items-center md:justify-start">
           <div className="w-[20%] h-full flex flex-col justify-center items-center pl-4">
             {/* <img src={Superficie} alt="Superficice" className="w-[25px]" /> */}
             <svg

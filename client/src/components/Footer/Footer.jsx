@@ -149,7 +149,7 @@ function Footer({ theme }) {
         </div>
       </div>
       {/* Developer */}
-      <div className="w-full h-[3rem] bg-black flex justify-center items-center gap-10">
+      <div className="w-full h-[3rem] bg-black flex justify-center items-center gap-2 lg:gap-10">
         <NavLink
           to={"https://www.instagram.com/maurimonzon_j/"}
           target="_blank"
