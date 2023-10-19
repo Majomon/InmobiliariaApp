@@ -50,7 +50,7 @@ function FilterSearch() {
   };
 
   return (
-    <div className="w-[20rem] h-[25rem] flex justify-center items-center my-8 border border-gray-300 rounded-md sticky top-[100px]">
+    <div className="w-[350px] h-[25rem] mr-10 flex justify-center items-center my-8 border border-gray-300 rounded-md sticky top-[100px]">
       <form className="w-full mx-4">
         <div className="w-full py-2">
           <select

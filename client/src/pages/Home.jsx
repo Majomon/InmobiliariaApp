@@ -44,7 +44,7 @@ function Home() {
       <div className="relative">
         <FilterHome />
       </div>
-      <h2 className="text-center pt-4 font-bold text-4xl  dark:bg-black dark:text-white">
+      <h2 className="text-center py-4 font-bold dark:bg-black dark:text-white text-xl md:text-2xl lg:text-3xl">
         Todas las propiedades
       </h2>
       <ContainerProperty properties={properties} />
