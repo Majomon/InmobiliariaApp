@@ -42,8 +42,8 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-full min-h-screen flex flex-col">
-      <Navbar theme={theme} setTheme={setTheme} />
+      <div className="w-full h-full min-h-screen flex flex-col">
+        <Navbar theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />

@@ -32,7 +32,7 @@ function Search({ theme }) {
 
   return (
     <div className="w-full h-full mt-[72px] dark:bg-black">
-      <div className="w-11/12 mx-auto flex flex-row justify-between">
+      <div className="w-full md:w-11/12 mx-auto flex flex-col md:flex-row justify-between">
         <FilterSearch />
         <ContainerProperty properties={properties} />
       </div>
