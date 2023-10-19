@@ -24,7 +24,7 @@ function Footer({ theme }) {
         <h2 className="my-8 text-center  font-bold dark:text-white text-xl md:text-2xl lg:text-3xl">
           Visitanos en nuestras redes
         </h2>
-        <lu className="w-2/3 mx-auto my-4 flex justify-between">
+        <lu className="w-2/3 lg:w-1/3 mx-auto my-4 flex justify-between">
           <li className="list-none">
             <NavLink to={"https://www.facebook.com"} target="_blank">
               <img
@@ -55,7 +55,7 @@ function Footer({ theme }) {
         </lu>
       </div>
       {/* Footer */}
-      <div className="w-10/12 mx-auto my-10 flex flex-col justify-center items-center">
+      <div className="w-10/12 mx-auto my-10 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-start">
         {/* Logo */}
         <div className="py-4">
           {theme === "light" ? (
@@ -74,7 +74,7 @@ function Footer({ theme }) {
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
             Menu
           </h2>
-          <div className="flex">
+          <div className="flex lg:flex-col lg:items-start">
             <NavLink to={"/"}>
               <h3 className="text-xl md:text-2xl pl-2 my-2 text-gray-400 hover:text-black dark:hover:text-gray-100">
                 Inicio
@@ -94,7 +94,7 @@ function Footer({ theme }) {
         </div>
 
         {/* Contacto */}
-        <div className="text-center py-4">
+        <div className="text-center py-4 lg:text-start  lg:items-start">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold  dark:text-gray-100">
             Contacto
           </h2>
