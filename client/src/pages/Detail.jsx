@@ -54,9 +54,7 @@ function Detail({ theme }) {
                 currentImageIndex={currentImageIndex}
               />
               <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
-                <button onClick={() => toast("My first toast")}>
-                  Quiero que me llamen
-                </button>
+                <button>Quiero que me llamen</button>
               </div>
               <DetailInfoBot dataAxios={property} theme={theme} />
             </div>

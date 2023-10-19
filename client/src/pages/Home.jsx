@@ -6,7 +6,7 @@ import img3 from "../assets/img/3.webp";
 import img4 from "../assets/img/4.webp";
 import CarouselHome from "../components/CarouselHome/CarouselHome";
 import ContainerProperty from "../components/ContainerProperty/ContainerProperty";
-import Filter from "../components/Filter/Filter";
+import FilterHome from "../components/FilterHome/FilterHome";
 import { getAllProperties } from "../redux/actions";
 
 function Home() {
@@ -38,11 +38,14 @@ function Home() {
   }, []); */
 
   return (
-    <div className="w-full h-full py-1 mt-16">
+    <div className="w-full h-full mt-[72px]">
       <CarouselHome images={images} />
       <div className="relative">
-        <Filter />
+        <FilterHome />
       </div>
+      <h2 className="text-center pt-4 font-bold text-4xl  dark:bg-black dark:text-white">
+        Todas las propiedades
+      </h2>
       <ContainerProperty />
     </div>
   );

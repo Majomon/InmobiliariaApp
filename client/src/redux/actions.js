@@ -48,7 +48,6 @@ export const getSearchFilter = (data) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(`/search`, data);
-      console.log(response.data);
       dispatch({ type: GET_SEARCH_FILTER, payload: response.data });
     } catch (error) {
       return [];

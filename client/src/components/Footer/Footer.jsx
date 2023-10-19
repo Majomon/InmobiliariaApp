@@ -18,7 +18,7 @@ function Footer({ theme }) {
   };
 
   return (
-    <div className=" bg-gray-100  dark:bg-black">
+    <div className="bg-gray-100  dark:bg-black">
       {/* Redes */}
       <div className="my-4">
         <h2 className="my-8 text-center text-3xl font-bold dark:text-white">
