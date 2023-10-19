@@ -48,7 +48,7 @@ function Detail({ theme }) {
         <div className="w-full h-full mt-16 flex flex-col ">
           <DetailInfoTop dataAxios={property} />
           <div className="w-full flex mt-4">
-            <div className="w-8/12 h-full pl-16 pr-4">
+{/*             <div className="w-8/12 h-full pl-16 pr-4">
               <CarouselVersion2
                 handleImageClick={handleImageClick}
                 currentImageIndex={currentImageIndex}
@@ -58,7 +58,7 @@ function Detail({ theme }) {
               </div>
               <DetailInfoBot dataAxios={property} theme={theme} />
             </div>
-            <FormContact theme={theme} />
+            <FormContact theme={theme} /> */}
           </div>
         </div>
       ) : (
