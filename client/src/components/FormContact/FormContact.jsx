@@ -86,7 +86,7 @@ function FormContact({ theme }) {
   };
 
   return (
-    <div className="w-4/12 h-full my-2 mr-16 bg-white dark:bg-black sticky top-[80px] rounded-lg">
+    <div className="w-4/12 h-full my-2 lg:mr-16 bg-white dark:bg-black sticky top-[80px] rounded-lg">
       <Toaster />
       <div className="mb-4 p-4 shadow-md dark:shadow-gray-200 border rounded-lg ">
         <h2 className="text-black dark:text-gray-100">Contacta al vendedor</h2>
