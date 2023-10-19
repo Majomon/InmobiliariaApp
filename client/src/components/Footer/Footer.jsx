@@ -30,7 +30,7 @@ function Footer({ theme }) {
               <img
                 src={Facebook}
                 alt="Facebook"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -39,7 +39,7 @@ function Footer({ theme }) {
               <img
                 src={Instagram}
                 alt="Instagram"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
@@ -48,7 +48,7 @@ function Footer({ theme }) {
               <img
                 src={Linkedin}
                 alt="Linkedin"
-                className="w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
+                className="w-[40px] lg:w-[50px] opacity-70 hover:opacity-100 hover:scale-105 duration-500 ease-out cursor-pointer hover:shadow-white hover:shadow-md rounded-full"
               />
             </NavLink>
           </li>
