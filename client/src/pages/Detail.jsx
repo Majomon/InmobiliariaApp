@@ -17,6 +17,7 @@ function Detail({ theme }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const dispatch = useDispatch();
   const property = useSelector((state) => state.details);
+
   useEffect(() => {
     dispatch(getPropertiesId(id))
       .then(() => {
