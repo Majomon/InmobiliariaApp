@@ -21,17 +21,17 @@ function PropertyCard(properties) {
   
   return (
     <Link to={`/detail/${_id}`}>
-      <div data-aos="zoom-in" className="w-[280px] md:w-[320px]  2xl:w-[360px] mx-auto my-8 rounded-md shadow-xl duration-700 ease-in-out hover:shadow-2xl hover:shadow-yellow-300 border border-gray-300 dark:shadow-lg dark:shadow-red-100 overflow-hidden dark:hover:shadow-red-600">
+      <div data-aos="zoom-in" className="w-[280px] md:w-[280px]  2xl:w-[360px] mx-auto my-8 rounded-md shadow-xl duration-700 ease-in-out hover:shadow-2xl hover:shadow-yellow-300 border border-gray-300 dark:shadow-lg dark:shadow-red-100 overflow-hidden dark:hover:shadow-red-600">
         <h2 className="py-2 text-center font-bold bg-yellow-300">
           {property} en {operation}
         </h2>
-        <div className="w-full h-[280px]  border-b-4 border-red-500 overflow-hidden">
+        <div className="w-full h-[240px]  border-b-4 border-red-500 overflow-hidden">
           <img
             src={images[0]}
             className="w-full h-full transition-transform duration-700 ease-in-out transform hover:scale-110"
           />
         </div>
-        <div className="w-full flex flex-col justify-between items-center py-2 px-4">
+        <div className="w-full flex flex-col justify-between items-center">
           <h2 className="font-bold text-base py-2 dark:text-gray-100 ">
             {name}
           </h2>
@@ -39,11 +39,11 @@ function PropertyCard(properties) {
             {address.street} | {address.zone}
           </h3>
 
-          <h4 className="text-blue-400 my-4 text-xl dark:text-yellow-300 border-b-2 border-gray-100">
+          <h4 className="text-blue-400 my-1 text-xl dark:text-yellow-300 border-b-2 border-gray-100">
             <strong>Precio:</strong> ${price}
           </h4>
         </div>
-        <div className="w-full grid grid-cols-3 bg-gray-300 p-2">
+        <div className="w-full flex justify-around items-center bg-gray-300 p-2">
           <div className="flex flex-col justify-center items-center">
             <img src={Superficie} className="w-6" />
             <p className="text-base text-gray-600 dark:text-gray-700">
@@ -62,7 +62,7 @@ function PropertyCard(properties) {
               <p className="text-base text-gray-600 dark:text-gray-700">
                 {environments === 1
                   ? "Monoambiente"
-                  : `${environments} Amb - ${bedrooms} Dorm`}
+                  : `${bedrooms} Dorm`}
               </p>
             </div>
           </div>
