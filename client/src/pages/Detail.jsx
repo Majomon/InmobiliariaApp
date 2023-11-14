@@ -9,6 +9,7 @@ import FormContact from "../components/FormContact/FormContact";
 import Spinner from "../components/Spinner/Spinner";
 import { clearDetailsState, getPropertiesId } from "../redux/actions";
 import { Toaster, toast } from "sonner";
+import CarouselMlWeb from "../components/CarouselMlWeb/CarouselMlWeb";
 
 function Detail({ theme }) {
   const { id } = useParams();
@@ -46,17 +47,18 @@ function Detail({ theme }) {
     <div className="bg-white dark:bg-black">
       <Toaster />
       {property.name ? (
-        <div className="w-full h-full mt-16 flex flex-col ">
+        <div className="w-full h-full mt-12 flex flex-col">
           <DetailInfoTop dataAxios={property} />
-          <div className="w-full flex flex-col md:flex-row mt-4 px-4">
-            <div className="w-full h-full md:w-8/12 lg:pl-16 md:pr-4">
-              <CarouselVersion2
+          <div className="w-10/12 mx-auto flex flex-col md:flex-row mt-4 gap-6">
+            <div className="w-full h-full">
+              {/*    <CarouselVersion2
                 handleImageClick={handleImageClick}
                 currentImageIndex={currentImageIndex}
-              />
-              <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
+              /> */}
+              {/*     <div className="w-full text-center my-2 py-2 border shadow-md bg-yellow-400 hover:bg-yellow-500  hover:translate-y-[-2px] transition-all duration-300 ease-in-out rounded-lg text-white font-bold text-xl cursor-pointer dark:shadow-gray-200">
                 <button>Quiero que me llamen</button>
-              </div>
+              </div> */}
+              <CarouselMlWeb />
               <DetailInfoBot dataAxios={property} theme={theme} />
             </div>
             <FormContact theme={theme} />
