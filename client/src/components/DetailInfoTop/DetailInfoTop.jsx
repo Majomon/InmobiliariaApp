@@ -91,12 +91,12 @@ function DetailInfoTop({ dataAxios }) {
       {/* Info extra del la publicacion */}
       <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 border-gray-100">
         <div className="w-10/12 h-full flex flex-col md:flex-row">
-          <div className="w-full h-full lg:w-7/12 lg:h-[7rem] flex flex-col md:flex-row">
+          <div className="w-full h-full lg:w-7/12 flex flex-col md:flex-row">
             <div className="w-full lg:w-6/12 h-full py-2">
-              <h3 className="text-base font-bold dark:text-white">
+              <h3 className="text-sm font-bold dark:text-white">
                 {dataAxios.name}
               </h3>
-              <h4 className="text-base dark:text-white">
+              <h4 className="text-sm dark:text-white">
                 {dataAxios.address.province}, {dataAxios.address.zone}
               </h4>
               <p className="text-gray-400">
@@ -122,8 +122,8 @@ function DetailInfoTop({ dataAxios }) {
               )}
             </div>
           </div>
-          <div className="w-full h-0 md:w-0 md:h-[7rem] border border-gray-400"></div>
-          <div className="w-full lg:w-5/12 h-[8rem] lg:h-[7rem] flex justify-between items-center md:justify-start">
+          <div className="w-full h-0 md:w-0 md:h-[5rem] border border-gray-400"></div> 
+          <div className="w-full lg:w-5/12 flex justify-between items-center md:justify-start">
             <div className="w-[20%] h-full flex flex-col justify-center items-center pl-4">
               {/* <img src={Superficie} alt="Superficice" className="w-[25px]" /> */}
               <svg
@@ -147,7 +147,7 @@ function DetailInfoTop({ dataAxios }) {
                 <path d="M21 12l-2 -2l-2 2" />
                 <path d="M3 10m0 2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2z" />
               </svg>
-              <strong className="text-lg dark:text-gray-100">
+              <strong className="text-sm dark:text-gray-100">
                 {dataAxios.area}
               </strong>
               <span className="text-sm dark:text-gray-100">Sup.</span>
@@ -170,7 +170,7 @@ function DetailInfoTop({ dataAxios }) {
                 <path d="M3 7v11m0 -4h18m0 4v-8a2 2 0 0 0 -2 -2h-8v6" />
                 <path d="M7 10m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
               </svg>
-              <strong className="text-lg dark:text-gray-100">
+              <strong className="text-sm dark:text-gray-100">
                 {dataAxios.environments}
               </strong>
               <span className="text-sm dark:text-gray-100">Ambientes</span>
@@ -195,7 +195,7 @@ function DetailInfoTop({ dataAxios }) {
                 <path d="M4 21l1 -1.5" />
                 <path d="M20 21l-1 -1.5" />
               </svg>
-              <strong className="text-lg dark:text-gray-100">
+              <strong className="text-sm dark:text-gray-100">
                 {dataAxios.bathrooms}
               </strong>
               <span className="text-sm dark:text-gray-100">Baños</span>
@@ -221,7 +221,7 @@ function DetailInfoTop({ dataAxios }) {
                   <path d="M5 20h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
                   <path d="M3 6l9 -4l9 4" />
                 </svg>
-                <strong className="text-lg dark:text-gray-100">
+                <strong className="text-sm dark:text-gray-100">
                   {dataAxios.garage}
                 </strong>
                 <span className="text-sm dark:text-gray-100">Cochera</span>
