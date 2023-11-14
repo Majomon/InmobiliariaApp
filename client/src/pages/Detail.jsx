@@ -10,6 +10,7 @@ import Spinner from "../components/Spinner/Spinner";
 import { clearDetailsState, getPropertiesId } from "../redux/actions";
 import { Toaster, toast } from "sonner";
 import CarouselMlWeb from "../components/CarouselMlWeb/CarouselMlWeb";
+import PropertyArea from "../components/PropertyArea/PropertyArea";
 
 function Detail({ theme }) {
   const { id } = useParams();
@@ -34,12 +35,12 @@ function Detail({ theme }) {
     };
   }, [id]);
 
-  const handleImageClick = (image) => {
+ /*  const handleImageClick = (image) => {
     // Maneja el clic en una imagen pequeña
     setSelectedImage(image);
     setCurrentImageIndex(image);
   };
-  // Verifica si los datos están cargados antes de renderizar
+  // Verifica si los datos están cargados antes de renderizar */
   if (loading) {
     return <Spinner />;
   }
@@ -63,6 +64,7 @@ function Detail({ theme }) {
             </div>
             <FormContact theme={theme} />
           </div>
+          <PropertyArea/>
         </div>
       ) : (
         <div className="w-full h-[100vh] ">
