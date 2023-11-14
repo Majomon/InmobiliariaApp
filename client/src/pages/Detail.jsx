@@ -49,7 +49,7 @@ function Detail({ theme }) {
       {property.name ? (
         <div className="w-full h-full mt-12 flex flex-col">
           <DetailInfoTop dataAxios={property} />
-          <div className="w-10/12 mx-auto flex flex-col md:flex-row mt-4 gap-6">
+          <div className="w-10/12 mx-auto flex flex-col md:flex-row mt-4 gap-16">
             <div className="w-full h-full">
               {/*    <CarouselVersion2
                 handleImageClick={handleImageClick}

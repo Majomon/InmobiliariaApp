@@ -8,11 +8,18 @@ function CarouselMlWeb() {
   const [imgSelected, setImgSelected] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [arrayImg, setArrayImg] = useState([]);
+  const filteredImages = arrayImg.filter((image) => image !== imgSelected);
+  const [newArrayImg, setNewArrayImg] = useState([]);
+
+  useEffect(() => {
+    if (imgSelected) {
+      setNewArrayImg([imgSelected,...filteredImages]);
+    }
+  }, [imgSelected]);
 
   useEffect(() => {
     if (property.images && property.images.length > 0) {
       setFirstImage(property.images[0]);
-
       property.images.forEach((image) => {
         setArrayImg((prevArrayImg) => [...prevArrayImg, image]);
       });
@@ -33,7 +40,7 @@ function CarouselMlWeb() {
 
   return (
     <div className="w-full h-full flex">
-      <div className="w-2/12 h-full flex flex-col justify-center items-center gap-4 pt-4">
+      <div className="w-2/12 h-full flex flex-col justify-center items-center gap-2 pt-4">
         {property.images?.map((image, index) => (
           <img
             key={index}
@@ -45,19 +52,19 @@ function CarouselMlWeb() {
         ))}
       </div>
 
-      <div className="w-10/12 pt-4 pl-4 mx-auto">
+      <div className="w-9/12 pt-4 mx-auto">
         {imgSelected ? (
           <img
             src={imgSelected}
             alt="Descripción de la imagen"
-            className="w-9/12 mx-auto h-[450px] rounded-lg "
+            className="w-full mx-auto h-[450px] rounded-lg"
             onClick={handlerImgModal}
           />
         ) : (
           <img
             src={firstImage}
             alt="Descripción de la imagen"
-            className="w-9/12 mx-auto h-[450px] rounded-lg "
+            className="w-full mx-auto h-[450px] rounded-lg"
             onClick={handlerImgModal}
           />
         )}
@@ -67,6 +74,7 @@ function CarouselMlWeb() {
         <CarouselMlWebModal
           images={arrayImg}
           closeModal={closeModal}
+          newArrayImg={newArrayImg}
         />
       )}
     </div>
