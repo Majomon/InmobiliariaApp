@@ -1,5 +1,13 @@
-function PropertyArea() {
-  return <div className="w-10/12 h-full mx-auto mt-6 bg-red-500">PropertyArea</div>;
+import PropertyCard from "../PropertyCard/PropertyCard";
+
+function PropertyArea({ sliderProperty }) {
+  return (
+    <div>
+      {sliderProperty?.map((elem) => (
+        <PropertyCard key={elem._id} property={elem} />
+      ))}
+    </div>
+  );
 }
 
 export default PropertyArea;
