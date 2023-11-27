@@ -22,7 +22,7 @@ function PropertyCard(properties) {
     <Link to={`/detail/${_id}`}>
       <div
         data-aos="zoom-in"
-        className="w-[240px] md:w-[280px]  2xl:w-[360px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:shadow-red-100 overflow-hidden dark:hover:shadow-red-600"
+        className="w-[240px] md:w-[280px]  2xl:w-[360px] mx-auto my-8 rounded-sm  shadow-lg shadow-gray-700  duration-700 ease-in-out hover:shadow-xl hover:shadow-gray-900  dark:shadow-lg dark:hover:shadow-xl  dark:shadow-gray-300 overflow-hidden dark:hover:shadow-gray-100"
       >
         <h2 className="py-2 text-center font-bold bg-gray-900 text-gray-100 text-sm">
           {property} en {operation}
@@ -33,13 +33,13 @@ function PropertyCard(properties) {
             className="w-full h-full transition-transform duration-700 ease-in-out transform hover:scale-110"
           />
         </div>
-        <div className="w-full flex flex-col justify-between items-center">
+        <div className="w-full flex flex-col justify-between  px-4">
           <h2 className="font-bold text-sm py-2 dark:text-gray-100 ">{name}</h2>
-          <h3 className="text-sm py-2 text-gray-400 font-semibold px-4">
+          <h3 className="text-sm py-2 text-gray-400 font-semibold">
             {address.street} | {address.zone}
           </h3>
 
-          <h4 className="text-base text-gray-600 my-1 dark:text-yellow-300 border-b-2 border-gray-100">
+          <h4 className="text-base text-gray-600 my-2 dark:text-gray-100">
             <strong>Precio:</strong> ${price}
           </h4>
         </div>

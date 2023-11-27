@@ -75,7 +75,7 @@ function Navbar({ theme, setTheme }) {
             <p
               className={
                 `${theme === "dark" ? "text-gray-100 hover:text-gray-300" : "text-black hover:text-gray-500 hover:border-b-gray-500"}` +
-                `${fullPath === option.to ? " border-b-2 border-gray-900 dark:border-red-700" : ""}`
+                `${fullPath === option.to ? " border-b-2 border-gray-900 dark:border-red-700 font-semibold " : ""}`
               }
             >
               {option.name}
