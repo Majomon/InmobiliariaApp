@@ -91,7 +91,7 @@ function DetailInfoTop({ dataAxios }) {
         </div>
       </div>
       {/* Info extra del la publicacion */}
-      <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 border-gray-100">
+      <div className="w-full h-full py-1 flex flex-col md:flex-row justify-center items-center bg-white shadow-md dark:bg-black border-b-2 dark:border-yellow-600 dark:shadow-yellow-600">
         <div className="w-10/12 h-full flex flex-col md:flex-row">
           <div className="w-full h-full lg:w-7/12 flex flex-col md:flex-row">
             <div className="w-full lg:w-6/12 h-full py-2">
