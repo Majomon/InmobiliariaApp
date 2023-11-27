@@ -16,13 +16,12 @@ function CarouselHome({ images }) {
 
   return (
     <div className="w-full h-[390px] md:h-[350px] lg:h-[500px] mx-auto relative overflow-hidden">
-      <div className="absolute left-0 right-0 top-20 flex justify-center">
-        <div className="w-fit p-1 rounded-lg backdrop-filter backdrop-blur-sm">
+      <div className="absolute left-0 right-0 top-16 flex justify-center">
+        <div className="w-fit p-1 rounded-lg ">
           <h1 className="text-4xl font-bold text-gray-950  text-center">
-            Bienvenido a tu futuro{" "}
-            <strong className="border-b-2 border-red-600">Hogar</strong>
+            Bienvenido a tu futuro <strong className="border-b-2 border-red-600">Hogar</strong>
           </h1>
-          <p className="px-4 md:px-0 text-gray-950 text-xl font-semibold text-center my-6">
+          <p className="md:px-0 text-gray-100 text-xl font-semibold text-center my-6 bg-black/50 py-4 rounded-md">
             Explora las propiedades y encontra la tuya
           </p>
         </div>
