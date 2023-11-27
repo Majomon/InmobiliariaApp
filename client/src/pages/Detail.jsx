@@ -29,10 +29,6 @@ function Detail({ theme }) {
     dispatch(getAllProperties());
     dispatch(getPropertiesId(id));
     setLoading(false);
-    const foundProperty = properties.filter((elem) => elem._id != property._id);
-    if (foundProperty) {
-      setSliderProperty(foundProperty);
-    }
     /*     dispatch(getPropertiesId(id))
       .then(() => {
         setLoading(false);
@@ -45,6 +41,20 @@ function Detail({ theme }) {
       dispatch(clearDetailsState());
     };
   }, [id]);
+
+  useEffect(() => {
+    if (property._id && properties.length > 0) {
+      const foundProperty = properties.filter(
+        (elem) =>
+          elem._id !== property._id &&
+          elem.address && // Verificar si 'address' está definido
+          elem.address.zone && // Verificar si 'zone' está definido
+          elem.address.zone == property.address.zone // Evitar comparaciones si 'address' o 'zone' son undefined
+      );
+      setSliderProperty(foundProperty);
+      setLoading(false);
+    }
+  }, [property._id, properties]);
 
   if (loading) {
     return <Spinner />;
@@ -70,22 +80,28 @@ function Detail({ theme }) {
             </div>
             <FormContact theme={theme} />
           </div>
-          {sliderProperty.length && (
+          {sliderProperty.length ? (
             <PropertyArea sliderProperty={sliderProperty} />
+          ) : (
+            ""
           )}
         </div>
       ) : (
-        <div className="w-full h-[100vh] ">
-          <div className="w-full h-full flex flex-col justify-center items-center">
-            <img src={Error} alt="error" className="w-[400px] h-[300px]" />
-            <h2 className="text-3xl">
-              No existe la propiedad de ID: <strong>{id}</strong>
-            </h2>
-          </div>
-        </div>
+        <Spinner />
       )}
     </div>
   );
 }
 
 export default Detail;
+
+{
+  /*         <div className="w-full h-[100vh] ">
+          <div className="w-full h-full flex flex-col justify-center items-center">
+            <img src={Error} alt="error" className="w-[400px] h-[300px]" />
+            <h2 className="text-3xl">
+              No existe la propiedad de ID: <strong>{id}</strong>
+            </h2>
+          </div>
+        </div> */
+}
