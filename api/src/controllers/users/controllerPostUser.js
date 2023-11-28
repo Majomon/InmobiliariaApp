@@ -1,10 +1,10 @@
 const User = require("../../models/users");
 
-const controllerPostUser = async ({ name, age, email }) => {
-  if (!name || !age || !email) {
+const controllerPostUser = async ({ name, email, password, admin }) => {
+  if (!name || !email || !password) {
     return "Faltan datos";
   }
-  const newUser = await User.create({ name, age, email });
+  const newUser = await User.create({ name, email, password, admin });
 
   return newUser;
 };
