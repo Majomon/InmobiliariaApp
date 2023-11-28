@@ -1,5 +1,8 @@
+//Propiedades
 import { GET_ALL_PROPERTIES } from "./actions";
 import { GET_PROPERTY_ID } from "./actions";
+//Usuarios
+import { GET_USER_ID } from "./actions";
 import { GET_SEARCH_FILTER } from "./actions";
 
 import { CLEAR_DETAILS_STATE } from "./actions";
@@ -11,6 +14,7 @@ const initialState = {
     images: [],
   },
   search: {},
+  user: false,
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -25,6 +29,10 @@ function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         details: payload,
+      };
+    case GET_USER_ID:
+      return {
+        user: true,
       };
 
     case GET_SEARCH_FILTER:

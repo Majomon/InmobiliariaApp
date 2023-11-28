@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_ALL_PROPERTIES = "GET_ALL_PROPERTIES";
 export const GET_PROPERTY_ID = "GET_PROPERTY_ID";
+export const GET_USER_ID = "GET_USER_ID";
 export const POST_RESEND = "POST_RESEND";
 export const GET_SEARCH_FILTER = "GET_SEARCH_FILTER";
 
@@ -25,6 +26,18 @@ export const getPropertiesId = (id) => {
     try {
       const detail = await axios.get(`/properties/${id}`);
       dispatch({ type: GET_PROPERTY_ID, payload: detail.data });
+    } catch (error) {
+      return [];
+    }
+  };
+};
+
+// Trae todos los usuarios
+export const getAllUsers = () => {
+  return async (dispatch) => {
+    try {
+      const prop = await axios.get(`/users`);
+      dispatch({ type: GET_USER_ID, payload: prop.data });
     } catch (error) {
       return [];
     }
