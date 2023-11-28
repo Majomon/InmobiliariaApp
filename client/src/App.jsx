@@ -12,13 +12,15 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
-import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 
 function App() {
   const location = useLocation();
+  const url = location.pathname;
+  const shouldRenderNavbar = url !== "/adminYosef";
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
   );
@@ -43,16 +45,15 @@ function App() {
 
   return (
     <div className="w-full h-full min-h-screen flex flex-col">
-      <Navbar theme={theme} setTheme={setTheme} />
+      {shouldRenderNavbar && <Navbar theme={theme} setTheme={setTheme} />}
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />
         <Route path="/search" element={<Search theme={theme} />} />
-        <Route path="/contact" element={<Contact theme={theme} />} />
+        <Route path="/adminYosef" element={<Admin />} />
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
-
-      <Footer theme={theme} />
+      {shouldRenderNavbar && <Footer theme={theme} />}
     </div>
   );
 }
