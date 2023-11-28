@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Toaster, toast } from "sonner";
-import { getAllUsers } from "../redux/actions";
+import { getAllUsers, getUserId } from "../redux/actions";
 
 function Admin() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function Admin() {
       pass: inputForm.pass,
     };
 
-    dispatch(getAllUsers());
+    dispatch(getUserId(formData));
     setInputForm({
       user: "",
       pass: "",
