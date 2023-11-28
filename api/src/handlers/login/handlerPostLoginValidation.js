@@ -1,10 +1,10 @@
-const postUserValidation = require("../../controllers/users/controllerPostUserValidation");
+const postUserValidation = require("../../controllers/login/controllerPostLoginValidation");
 
 const handlerPostUserValidation = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const response = await postUserValidation({ name,email, password })
+    const response = await postUserValidation({ email, password })
     return res.status(200).json(response);
   } catch (error) {
     res.status(404).json({ error: error.message });

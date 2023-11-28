@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Toaster, toast } from "sonner";
-import { getAllUsers, getUserId } from "../redux/actions";
+import {  getUserId } from "../redux/actions";
 
 function Admin() {
   const dispatch = useDispatch();
   const [inputForm, setInputForm] = useState({
-    user: "",
-    pass: "",
+    email: "",
+    password: "",
   });
 
   const handlerChange = (e) => {
@@ -18,14 +18,14 @@ function Admin() {
   const handlerSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      user: inputForm.user,
-      pass: inputForm.pass,
+      email: inputForm.email,
+      password: inputForm.pass,
     };
 
     dispatch(getUserId(formData));
     setInputForm({
-      user: "",
-      pass: "",
+      email: "",
+      password: "",
     });
   };
 
@@ -40,16 +40,16 @@ function Admin() {
         <div className="w-full h-full flex flex-col gap-4">
           <input
             type="text"
-            name="user"
-            value={inputForm.name}
+            name="email"
+            value={inputForm.email}
             onChange={handlerChange}
-            placeholder="Usuario"
+            placeholder="Email"
             className="my-0 rounded-sm border-gray-800 border-2 "
-          />{" "}
+          />
           <input
             type="text"
-            name="pass"
-            value={inputForm.name}
+            name="password"
+            value={inputForm.password}
             onChange={handlerChange}
             placeholder="Contraseña"
             className="my-0"

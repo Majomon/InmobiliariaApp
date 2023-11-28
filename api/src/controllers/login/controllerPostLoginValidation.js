@@ -1,8 +1,10 @@
-const getAllUsers = require("./controllerGetUsers");
+const getAllUsers = require("../users/controllerGetUsers");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const controllerPostUserValidation = async ({ email, password }) => {
+const controllerPostUserValidation = async (data) => {
+  const {  email, password } = data;
+
   const dataUsers = await getAllUsers();
 
   const userFound = dataUsers.find((user) => user.email === email);

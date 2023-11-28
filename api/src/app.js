@@ -4,7 +4,8 @@ const cors = require("cors");
 const routerUser = require("./routes/users.routes");
 const routerProperty = require("./routes/property.routes");
 const routerResend = require("./routes/resend.routes");
-const routerSearch = require("./routes/search.routes")
+const routerSearch = require("./routes/search.routes");
+const routerLogin = require("./routes/login.routes");
 
 //Rutas
 
@@ -17,8 +18,9 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/users", routerUser);
+app.use("/login", routerLogin);
 app.use("/properties", routerProperty);
 app.use("/resend", routerResend);
-app.use("/search", routerSearch)
+app.use("/search", routerSearch);
 
 module.exports = app;

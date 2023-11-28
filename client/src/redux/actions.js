@@ -49,10 +49,11 @@ export const getAllUsers = () => {
 };
 
 // Trae propiedad por ID
-export const getUserId = (data) => {
+export const getUserId = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`/user`,data);
+      const response = await axios.post(`/login`,user);
+      console.log(response);
       dispatch({ type: GET_USER_ID, payload: response.data });
     } catch (error) {
       return [];
