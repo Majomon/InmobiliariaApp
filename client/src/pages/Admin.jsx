@@ -19,7 +19,7 @@ function Admin() {
     e.preventDefault();
     const data = {
       email: inputForm.email,
-      password: inputForm.pass,
+      password: inputForm.password,
     };
     dispatch(loginUser(data));
     setInputForm({
