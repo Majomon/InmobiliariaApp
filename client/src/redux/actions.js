@@ -1,10 +1,10 @@
 import axios from "axios";
 //Propiedades
 export const GET_ALL_PROPERTIES = "GET_ALL_PROPERTIES";
-export const GET_PROPERTY_ID = "GET_PROPERTY_ID";
+export const GET_PROPERTY_ID = "GET_PROPERTY_ID ";
 //Usuarios
 export const GET_ALL_USERS = "GET_ALL_USERS";
-export const GET_USER_ID = "GET_USER_ID";
+export const LOGIN_USER = "LOGIN_USER";
 
 export const POST_RESEND = "POST_RESEND";
 export const GET_SEARCH_FILTER = "GET_SEARCH_FILTER";
@@ -48,13 +48,13 @@ export const getAllUsers = () => {
   };
 };
 
-// Trae propiedad por ID
-export const getUserId = (user) => {
+
+// Trae usuario por ID
+export const loginUser = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`/login`,user);
-      console.log(response);
-      dispatch({ type: GET_USER_ID, payload: response.data });
+      const { data } = await axios.post(`/users/login`, user);
+      dispatch({ type: LOGIN_USER, payload: data });
     } catch (error) {
       return [];
     }

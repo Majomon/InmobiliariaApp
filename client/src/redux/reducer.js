@@ -1,9 +1,10 @@
 //Propiedades
 import { GET_ALL_PROPERTIES } from "./actions";
 import { GET_PROPERTY_ID } from "./actions";
+
 //Usuarios
 import { GET_ALL_USERS } from "./actions";
-import { GET_USER_ID } from "./actions";
+import { LOGIN_USER } from "./actions";
 
 import { GET_SEARCH_FILTER } from "./actions";
 import { CLEAR_DETAILS_STATE } from "./actions";
@@ -16,7 +17,7 @@ const initialState = {
   },
   search: {},
   users: [],
-  user: {},
+  userData: {},
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -37,12 +38,11 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         users: payload,
       };
-    case GET_USER_ID:
+    case LOGIN_USER:
       return {
         ...state,
-        user: payload,
+        userData: payload,
       };
-
     case GET_SEARCH_FILTER:
       return {
         ...state,

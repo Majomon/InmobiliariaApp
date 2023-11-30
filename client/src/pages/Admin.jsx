@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Toaster, toast } from "sonner";
-import {  getUserId } from "../redux/actions";
+import { Toaster } from "sonner";
+import { loginUser } from "../redux/actions";
 
 function Admin() {
   const dispatch = useDispatch();
@@ -17,12 +17,11 @@ function Admin() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    const formData = {
+    const data = {
       email: inputForm.email,
       password: inputForm.pass,
     };
-
-    dispatch(getUserId(formData));
+    dispatch(loginUser(data));
     setInputForm({
       email: "",
       password: "",
