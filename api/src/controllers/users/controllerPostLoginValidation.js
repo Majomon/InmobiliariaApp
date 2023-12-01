@@ -34,11 +34,11 @@ const controllerPostUserValidation = async (data) => {
   );
 
   const user = {
-    id: userFound._id,
+    /*     id: userFound._id, */
     name: userFound.name,
     email: userFound.email,
-    password: userFound.password,
-    isAdmin: userFound.isAdmin,
+    /*     password: userFound.password, */
+    /*  isAdmin: userFound.isAdmin, */
     token,
   };
 

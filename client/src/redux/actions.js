@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "sonner";
+
 //Propiedades
 export const GET_ALL_PROPERTIES = "GET_ALL_PROPERTIES";
 export const GET_PROPERTY_ID = "GET_PROPERTY_ID ";
@@ -11,6 +13,9 @@ export const GET_SEARCH_FILTER = "GET_SEARCH_FILTER";
 
 export const CLEAR_DETAILS_STATE = "CLEAR_DETAILS_STATE";
 export const CLEAR_SEARCH_STATE = "CLEAR_SEARCH_STATE";
+
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
 
 // Trae todas las propiedades
 export const getAllProperties = () => {
@@ -48,18 +53,30 @@ export const getAllUsers = () => {
   };
 };
 
-
 // Trae usuario por ID
 export const loginUser = (user) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/users/login`, user);
-      dispatch({ type: LOGIN_USER, payload: data });
+      const response = await axios.post(`/users/login`, user);
+      window.localStorage.setItem("user", JSON.stringify(response.data));
+      toast.success("Logeado");
+      dispatch(loginUserSuccess(response.data));
     } catch (error) {
-      return [];
+      dispatch(loginUserFailure());
+      toast.error("Los datos ingresados son incorrectos");
+      throw new Error("Los datos ingresados son incorrectos");
     }
   };
 };
+
+export const loginUserSuccess = (userData) => ({
+  type: LOGIN_USER_SUCCESS,
+  payload: userData,
+});
+
+export const loginUserFailure = () => ({
+  type: LOGIN_USER_FAILURE,
+});
 
 // Enviar email
 export const postResend = (formData) => {

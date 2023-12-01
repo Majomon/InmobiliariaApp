@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import { loginUser } from "../redux/actions";
 
-function Admin() {
+function Login() {
+  const userData = useSelector((state) => state.userData);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [inputForm, setInputForm] = useState({
     email: "",
     password: "",
@@ -15,22 +19,28 @@ function Admin() {
     setInputForm({ ...inputForm, [name]: value });
   };
 
-  const handlerSubmit = (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault();
+
     const data = {
       email: inputForm.email,
       password: inputForm.password,
     };
-    dispatch(loginUser(data));
-    setInputForm({
-      email: "",
-      password: "",
-    });
+    await dispatch(loginUser(data));
   };
+
+  useEffect(() => {
+    if (userData!=null) {
+      console.log(userData);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
+    }
+  }, [userData, navigate]);
 
   return (
     <div className="w-full min-h-screen bg-gray-950 flex justify-center items-center">
-      <Toaster />
+      <Toaster position="top-center" />
       <form
         className="w-2/12 h-full p-10 bg-gray-500 rounded-lg flex flex-col gap-6"
         onSubmit={handlerSubmit}
@@ -60,4 +70,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default Login;
