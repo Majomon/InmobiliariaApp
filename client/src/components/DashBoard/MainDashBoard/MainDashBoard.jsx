@@ -3,7 +3,7 @@ import MenuLatelDashBoard from "../MenuLatelDashBoard/MenuLatelDashBoard";
 
 function MainDashBoard() {
   return (
-    <div>
+    <div className="w-full h-full">
       <MenuLatelDashBoard />
     </div>
   );

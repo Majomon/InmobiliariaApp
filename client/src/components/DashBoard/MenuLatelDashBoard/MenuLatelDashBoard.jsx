@@ -1,7 +1,12 @@
-import React from "react";
-
+import properties from "../opcionesMenuLateral";
 function MenuLatelDashBoard() {
-  return <div>MenuLatelDashBoard</div>;
+  return (
+    <ul className="w-2/12 min-h-screen border-r-2 flex flex-col pl-10 pt-10 gap-4">
+      {properties.map((elem) => (
+        <li className="text-left">{elem}</li>
+      ))}
+    </ul>
+  );
 }
 
 export default MenuLatelDashBoard;
