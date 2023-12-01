@@ -21,8 +21,8 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const url = location.pathname;/*  */
-/*   const shouldRenderNavbar = url !== "/adminYosef" || url !== "/dashboard"; */
+  const url = location.pathname; /*  */
+  const shouldRenderNavbar = url !== "/dashboard";
   const [theme, setTheme] = useState(
     window.localStorage.getItem("color-theme") || "light"
   );
@@ -62,8 +62,7 @@ function App() {
 
   return (
     <div className="w-full h-full min-h-screen flex flex-col">
-      {/*     {shouldRenderNavbar && <Navbar theme={theme} setTheme={setTheme} />} */}
-      <Navbar theme={theme} setTheme={setTheme} />
+      {shouldRenderNavbar && <Navbar theme={theme} setTheme={setTheme} />}
       <Routes>
         <Route path="/" element={<Home theme={theme} />} />
         <Route path="/detail/:id" element={<Detail theme={theme} />} />
@@ -72,8 +71,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
-      <Footer theme={theme} />
-      {/*  {shouldRenderNavbar && <Footer theme={theme} />} */}
+      {shouldRenderNavbar && <Footer theme={theme} />}
     </div>
   );
 }
