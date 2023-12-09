@@ -1,6 +1,6 @@
 import properties from "../opcionesMenuLateral";
 
-function MenuLatelDashBoard({ handleButtonClick,activeComponent }) {
+function MenuLateralDashBoard({ handleButtonClick, activeComponent }) {
   return (
     <ul className="w-2/12 border-r-2 flex flex-col pl-10 pt-10 gap-4">
       {properties.map((elem) => (
@@ -8,6 +8,7 @@ function MenuLatelDashBoard({ handleButtonClick,activeComponent }) {
           className="cursor-pointer"
           onClick={() => handleButtonClick(elem.component)}
           disabled={activeComponent === elem.component}
+          key={elem.id}
         >
           {elem.name}
         </li>
@@ -16,4 +17,4 @@ function MenuLatelDashBoard({ handleButtonClick,activeComponent }) {
   );
 }
 
-export default MenuLatelDashBoard;
+export default MenuLateralDashBoard;
