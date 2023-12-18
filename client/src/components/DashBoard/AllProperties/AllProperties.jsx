@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDashboard";
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
+import { getAllProperties, getPropertiesId } from "../../../redux/actions";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
@@ -26,8 +27,18 @@ function AllProperties() {
       setCountPage(countPage - 1);
     }
   };
+
+  const handleToggle = (propertyId, activeProperty) => {
+    setTimeout(() => {
+      dispatch(getAllProperties());
+    }, 300);
+    dispatch(
+      getPropertiesId(propertyId, { activeProperty: `${!activeProperty}` })
+    );
+  };
+
   return (
-    <ul className="w-full h-fit">
+    <ul className="w-full h-fit px-4">
       <div className="w-full flex justify-between">
         <h1 className="text-lg font-bold ">Propiedades</h1>
         <button className="text-xs font-semibold p-2 bg-green-500 rounded-md">
@@ -38,7 +49,7 @@ function AllProperties() {
         <thead>
           <tr className="h-10 font-bold text-md text-left">
             <th>Imagen</th>
-            <th>Nombre</th>
+            <th>ID</th>
             <th>Operación</th>
             <th>Propiedad</th>
             <th>Precio</th>
@@ -49,62 +60,64 @@ function AllProperties() {
         <tbody className="w-full">
           {pagination().map((prop, index) => (
             <tr
-              className={`h-12 ${
-                index % 2 === 0 ? "bg-slate-100" : "bg-slate-300"
+              className={`h-16 ${
+                index % 2 === 0 ? "bg-slate-100" : "bg-slate-200"
               }`}
               key={index}
             >
-              <td className="flex justify-center">
+              <td className="">
                 <img
-                  className="w-11 h-14"
+                  className="w-16 h-16"
                   src={prop.images[0]}
                   alt={prop.name}
                 />
               </td>
-              <td>{prop.name}</td>
+              <td>{prop._id}</td>
               <td>{prop.operation}</td>
               <td>{prop.property}</td>
               <td>{prop.price}</td>
               <td>
-                <button onClick={() => handleEdit(movie.id)}>
+                <button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    className="w-6 h-6 stroke-light-900"
                   >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                      fill="none"
+                      stroke="#000000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m12 17l-6 4V7a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v4m.42 4.61a2.1 2.1 0 1 1 2.97 2.97L18 22h-3v-3z"
                     />
                   </svg>
                 </button>
               </td>
               <td>
-                {/*                 <Switch
+                <Switch
                   className={`relative inline-flex h-5 w-10 items-center rounded-full ${
-                    movie.activeMovie ? "bg-green-500" : "bg-red-500"
+                    prop.availability ? "bg-green-500" : "bg-red-500"
                   }`}
-                  checked={movie.activeMovie}
-                  onChange={() => handleToggle(movie.id, movie.activeMovie)}
+                  checked={prop.availability}
+                  onChange={() => handleToggle(prop._id, prop.availability)}
                 >
                   <span
                     aria-hidden="true"
                     className={`${
-                      movie.activeMovie ? "translate-x-5" : "translate-x-0"
+                      prop.availability ? "translate-x-5" : "translate-x-0"
                     }
                             pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                   />
-                </Switch> */}
+                </Switch>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       {properties.length ? (
-        <div className="w-full flex justify-center items-center pt-4">
+        <div className="w-full flex justify-center items-center py-4">
           <button
             onClick={prevPage}
             className="bg-gray-400 rounded-md p-1 mx-2"
