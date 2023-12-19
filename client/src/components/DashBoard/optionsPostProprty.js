@@ -12,6 +12,12 @@ const propertiesOptions = [
   { id: 11, component: "description", name: "Descripción" },
   {
     id: 12,
+    component: "images",
+    name: "Imagenes",
+  },
+  { id: 13, component: "price", name: "Precio" },
+  {
+    id: 14,
     component: "address",
     name: "Dirección",
     moreOptions: [
@@ -23,7 +29,7 @@ const propertiesOptions = [
     ],
   },
   {
-    id: 13,
+    id: 15,
     component: "services",
     name: "Servicios",
     moreOptions: [
@@ -36,16 +42,10 @@ const propertiesOptions = [
       { id: 13.7, component: "sewageDrain", name: "Drenaje" },
       { id: 13.8, component: "balcony", name: "Balcón" },
       { id: 13.9, component: "laundry", name: "Lavadero" },
-      { id: 13.10, component: "yard", name: "Patio" },
+      { id: 13.1, component: "yard", name: "Patio" },
       { id: 13.11, component: "dressingRoom", name: "Vestidor" },
     ],
   },
-  {
-    id: 14,
-    component: "images",
-    name: "Imagenes",
-  },
-  { id: 15, component: "price", name: "Precio" },
 ];
 
 export default propertiesOptions;

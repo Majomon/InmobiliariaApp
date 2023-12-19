@@ -71,8 +71,6 @@ function CreateProperty({ setActiveFormCreate }) {
     price: formData.price,
   };
 
-  console.log(newProperty);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -98,14 +96,15 @@ function CreateProperty({ setActiveFormCreate }) {
         className="w-3/4 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-10 mx-auto my-10 bg-slate-600 rounded"
       >
         <h2>Crear Propiedad</h2>
-        <div className="w-full h-full flex flex-wrap ">
+        <div className="w-full h-full grid grid-cols-5 gap-x-2 justify-center">
           {propertiesOptions.map((option) => (
-            <div key={option.id} className="my-4">
-              <label htmlFor={option.component}>{option.name}</label>
+            <div key={option.id} className="my-1 ">
               {option.component === "services" ? (
-                <div key={option.id}>
-                  {option.moreOptions.map((subOption) => (
-                    <div key={subOption.name} className="ml-4">
+                // Usa paréntesis en lugar de corchetes aquí
+                option.moreOptions.map((subOption) => (
+                  <div key={subOption.name} className="ml-4">
+                    <p>{option.name}</p>
+                    <div>
                       <label htmlFor={subOption.component}>
                         {subOption.name}
                       </label>
@@ -117,10 +116,11 @@ function CreateProperty({ setActiveFormCreate }) {
                         onChange={handleChange}
                       />
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))
               ) : option.component === "address" ? (
                 <div key={option.id}>
+                  <p>{option.name}</p>
                   {option.moreOptions.map((subOption) => (
                     <div key={subOption.id} className="ml-4">
                       <label htmlFor={subOption.component}>
@@ -137,13 +137,16 @@ function CreateProperty({ setActiveFormCreate }) {
                   ))}
                 </div>
               ) : (
-                <input
-                  type="text"
-                  id={option.component}
-                  name={option.component}
-                  value={formData[option.component]}
-                  onChange={handleChange}
-                />
+                <div className="flex flex-col">
+                  <label htmlFor={option.component}>{option.name}</label>
+                  <input
+                    type="text"
+                    id={option.component}
+                    name={option.component}
+                    value={formData[option.component]}
+                    onChange={handleChange}
+                  />
+                </div>
               )}
             </div>
           ))}
