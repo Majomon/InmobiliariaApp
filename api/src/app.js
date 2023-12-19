@@ -5,6 +5,8 @@ const routerUser = require("./routes/users.routes");
 const routerProperty = require("./routes/property.routes");
 const routerResend = require("./routes/resend.routes");
 const routerSearch = require("./routes/search.routes");
+const routerCloudinary = require("./routes/cloudinary.routes");
+
 
 //Rutas
 
@@ -20,5 +22,7 @@ app.use("/users", routerUser);
 app.use("/properties", routerProperty);
 app.use("/resend", routerResend);
 app.use("/search", routerSearch);
+app.use("/cloudinary", routerCloudinary);
+
 
 module.exports = app;
