@@ -3,12 +3,14 @@ import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDa
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
 import { getAllProperties, getPropertiesId } from "../../../redux/actions";
+import CreateProperty from "../CreateProperty";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
   const orderProperties = properties.sort((a, b) => b.id - a.id);
   const [currentPage, setCurrentPage] = useState(0);
   const [countPage, setCountPage] = useState(1);
+  const [activeFormCreate, setActiveFormCreate] = useState(false);
 
   const pagination = () => {
     return properties.slice(currentPage, currentPage + 8);
@@ -41,7 +43,7 @@ function AllProperties() {
     <ul className="w-full h-fit px-4">
       <div className="w-full flex justify-between">
         <h1 className="text-lg font-bold ">Propiedades</h1>
-        <button className="text-xs font-semibold p-2 bg-green-500 rounded-md">
+        <button className="text-xs font-semibold p-2 bg-green-500 rounded-md" onClick={()=>setActiveFormCreate(true)}>
           Crear propiedad
         </button>
       </div>
@@ -163,6 +165,7 @@ function AllProperties() {
           <h2 className="">No hay resultados encontrados</h2>
         </div>
       )}
+      {activeFormCreate && <CreateProperty  setActiveFormCreate={setActiveFormCreate} />}
     </ul>
   );
 }
