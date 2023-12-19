@@ -4,6 +4,7 @@ import { getAllProperties } from "../../../redux/actions";
 import AllProperties from "../AllProperties/AllProperties";
 import EnabledProperties from "../EnabledProperties/EnabledProperties";
 import MenuLateralDashBoard from "../MenuLateralDashBoard/MenuLateralDashBoard";
+import { Toaster, toast } from "sonner";
 
 function MainDashBoard() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function MainDashBoard() {
       />
       <div className="w-full px-10 pt-10">
         {activeComponent === "home" && <AllProperties />}
-        {activeComponent === "enabled" && <EnabledProperties/>}
+        {activeComponent === "enabled" && <EnabledProperties />}
       </div>
     </div>
   );

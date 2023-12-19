@@ -13,7 +13,6 @@ function Cloudinary({ setFormData, formData }) {
         ...prevData,
         images: imageUrls,
       }));
-      console.log(formData.images);
       setUpOk(true);
     } else {
       setUpOk(false);

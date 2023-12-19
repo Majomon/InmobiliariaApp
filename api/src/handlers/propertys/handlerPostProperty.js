@@ -1,7 +1,7 @@
 const controllerPostProperty = require("../../controllers/propertys/controllerPostProperty");
 
 const handlerPostProperty = async (req, res) => {
-  const {
+/*   const {
     operation,
     property,
     environments,
@@ -18,9 +18,9 @@ const handlerPostProperty = async (req, res) => {
     images,
     price,
   } = req.body;
-
+ */
   try {
-    const newProperty = await controllerPostProperty({
+/*     const newProperty = await controllerPostProperty({
       operation,
       property,
       environments,
@@ -36,7 +36,9 @@ const handlerPostProperty = async (req, res) => {
       services,
       images,
       price,
-    });
+    }); */
+    console.log(req.body);
+    const newProperty = await controllerPostProperty(req.body)
     res.status(200).json(newProperty);
   } catch (error) {
     res.status(400).json({ error: error.message });

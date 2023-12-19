@@ -3,7 +3,8 @@ import { toast } from "sonner";
 
 //Propiedades
 export const GET_ALL_PROPERTIES = "GET_ALL_PROPERTIES";
-export const GET_PROPERTY_ID = "GET_PROPERTY_ID ";
+export const GET_PROPERTY_ID = "GET_PROPERTY_ID";
+export const POST_PROPERTY = "POST_PROPERTY";
 //Usuarios
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const LOGIN_USER = "LOGIN_USER";
@@ -37,6 +38,19 @@ export const getPropertiesId = (id) => {
       dispatch({ type: GET_PROPERTY_ID, payload: detail.data });
     } catch (error) {
       return [];
+    }
+  };
+};
+// Crea propiedades
+export const postProperty = (data) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post("/properties", data);
+      dispatch({ type: POST_PROPERTY, payload: response });
+      toast.success("Propiedad creada");
+    } catch (error) {
+      toast.error("No se creo la propiedad");
+      return error.messagge;
     }
   };
 };

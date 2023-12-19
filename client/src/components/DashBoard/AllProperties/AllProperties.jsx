@@ -4,6 +4,7 @@ import { Switch } from "@headlessui/react";
 import { useState } from "react";
 import { getAllProperties, getPropertiesId } from "../../../redux/actions";
 import CreateProperty from "../CreateProperty";
+import { Toaster, toast } from "sonner";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
@@ -41,9 +42,14 @@ function AllProperties() {
 
   return (
     <ul className="w-full h-fit px-4">
+      <Toaster />
+
       <div className="w-full flex justify-between">
         <h1 className="text-lg font-bold ">Propiedades</h1>
-        <button className="text-xs font-semibold p-2 bg-green-500 rounded-md" onClick={()=>setActiveFormCreate(true)}>
+        <button
+          className="text-xs font-semibold p-2 bg-green-500 rounded-md"
+          onClick={() => setActiveFormCreate(true)}
+        >
           Crear propiedad
         </button>
       </div>
@@ -165,7 +171,9 @@ function AllProperties() {
           <h2 className="">No hay resultados encontrados</h2>
         </div>
       )}
-      {activeFormCreate && <CreateProperty  setActiveFormCreate={setActiveFormCreate} />}
+      {activeFormCreate && (
+        <CreateProperty setActiveFormCreate={setActiveFormCreate} />
+      )}
     </ul>
   );
 }

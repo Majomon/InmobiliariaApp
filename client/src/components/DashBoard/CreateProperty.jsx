@@ -1,10 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import propertiesOptions from "./optionsPostProprty.js";
+import { toast } from "sonner";
 import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
+import propertiesOptions from "./optionsPostProprty.js";
 
 function CreateProperty({ setActiveFormCreate }) {
-  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     operation: "",
     property: "",
@@ -82,16 +82,36 @@ function CreateProperty({ setActiveFormCreate }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(newProperty);
+    try {
+      // Envío de la información para crear la propiedad mediante la acción correspondiente
+      const res = await axios.post(
+        "http://localhost:8080/properties",
+        newProperty
+      );
 
-    // Envío de la información para crear la propiedad mediante la acción correspondiente
-    dispatch(createProperty(newProperty));
+      // Verifica el estado de la solicitud
+      if (res.status === 200 || res.status === 201) {
+        // Si la solicitud se realizó con éxito, muestra una alerta de propiedad creada
+        toast.success("Propiedad creada con exito perrito");
+        setActiveFormCreate(false); // Cerrar el formulario después de enviar la información
+      } else {
+        // En caso de que la solicitud no sea exitosa, muestra una alerta de error
+        alert("Error al crear la propiedad");
+      }
+    } catch (error) {
+      // Si hay un error en la solicitud, muestra una alerta con el mensaje de error
+      alert("Hubo un error al procesar la solicitud");
+      console.error("Error:", error);
+    }
     setActiveFormCreate(false); // Cerrar el formulario después de enviar la información
   };
 
   return (
     <div className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-gray-950">
+
       <form
         onSubmit={handleSubmit}
         className="w-10/12 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-4 mx-auto my-10 bg-slate-600 rounded"
