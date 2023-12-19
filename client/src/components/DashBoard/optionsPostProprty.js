@@ -10,12 +10,12 @@ const propertiesOptions = [
   { id: 9, component: "availability", name: "Habilitado" },
   { id: 10, component: "name", name: "Nombre" },
   { id: 11, component: "description", name: "Descripción" },
+  { id: 12, component: "price", name: "Precio" },
   {
-    id: 12,
+    id: 13,
     component: "images",
     name: "Imagenes",
   },
-  { id: 13, component: "price", name: "Precio" },
   {
     id: 14,
     component: "address",

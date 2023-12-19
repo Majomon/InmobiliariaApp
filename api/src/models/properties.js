@@ -29,6 +29,7 @@ const propertiesSchema = mongoose.Schema({
   //Cochera
   garage: {
     type: Number,
+    required: false,
   },
   //Mts cuadrados
   area: {
@@ -79,46 +80,57 @@ const propertiesSchema = mongoose.Schema({
     //Airea acondicionado
     airConditioning: {
       type: Boolean,
+      default: false,
     },
     //Agua corriente
     runningWater: {
       type: Boolean,
+      default: false,
     },
     //Pavimento
     pavement: {
       type: Boolean,
+      default: false,
     },
     //Termotanque
     waterHeater: {
       type: String,
+      default: false,
     },
     //Luz
     light: {
       type: Boolean,
+      default: false,
     },
     //Cocina
     kitchen: {
       type: Boolean,
+      default: false,
     },
     //Desague cloacal
     sewageDrain: {
       type: Boolean,
+      default: false,
     },
     //Balcon
     balcony: {
       type: Boolean,
+      default: false,
     },
     //Lavadero
     laundry: {
       type: Boolean,
+      default: false,
     },
     //Patio
     yard: {
       type: Boolean,
+      default: false,
     },
     //Vestidor
     dressingRoom: {
       type: Boolean,
+      default: false,
     },
   },
   images: [

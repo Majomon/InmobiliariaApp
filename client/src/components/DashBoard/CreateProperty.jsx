@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import propertiesOptions from "./optionsPostProprty.js";
+import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
 
 function CreateProperty({ setActiveFormCreate }) {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ function CreateProperty({ setActiveFormCreate }) {
     e.preventDefault();
 
     // Envío de la información para crear la propiedad mediante la acción correspondiente
-    dispatch(createProperty(formData));
+    dispatch(createProperty(newProperty));
     setActiveFormCreate(false); // Cerrar el formulario después de enviar la información
   };
 
@@ -93,7 +94,7 @@ function CreateProperty({ setActiveFormCreate }) {
     <div className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-gray-950">
       <form
         onSubmit={handleSubmit}
-        className="w-3/4 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-10 mx-auto my-10 bg-slate-600 rounded"
+        className="w-10/12 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-4 mx-auto my-10 bg-slate-600 rounded"
       >
         <button
           type="button"
@@ -113,19 +114,23 @@ function CreateProperty({ setActiveFormCreate }) {
           </svg>
         </button>
         <h2>Crear Propiedad</h2>
-        <div className="w-full h-full grid grid-cols-4 gap-x-2 justify-center items-center">
+        <div className="w-full h-full grid grid-cols-4 gap-x-2 ">
           {propertiesOptions.map((option) => (
-            <div key={option.id} className="flex my-1">
+            <div key={option.id} className="flex my-1 justify-center">
               {option.component !== "services" &&
-                option.component !== "address" && (
+                option.component !== "address" &&
+                option.component !== "images" && (
                   <div className="flex flex-col">
-                    <label htmlFor={option.component}>{option.name}</label>
+                    <label htmlFor={option.component} className="text-sm">
+                      {option.name}
+                    </label>
                     <input
                       type="text"
                       id={option.component}
                       name={option.component}
                       value={formData[option.component]}
                       onChange={handleChange}
+                      className="h-6 rounded-sm"
                     />
                   </div>
                 )}
@@ -136,14 +141,14 @@ function CreateProperty({ setActiveFormCreate }) {
           {propertiesOptions.map((option) => {
             if (option.component === "address") {
               return (
-                <div key={option.id} className="">
-                  <p>{option.name}</p>
+                <div key={option.id}>
+                  <p className="text-sm">{option.name}</p>
                   {option.moreOptions.map((subOption) => (
                     <div
                       key={subOption.id}
                       className="w-full flex justify-between px-4 py-1"
                     >
-                      <label htmlFor={subOption.component}>
+                      <label htmlFor={subOption.component} className="text-sm">
                         {subOption.name}
                       </label>
                       <input
@@ -152,6 +157,7 @@ function CreateProperty({ setActiveFormCreate }) {
                         name={subOption.component}
                         value={formData[subOption.component]}
                         onChange={handleChange}
+                        className="h-6"
                       />
                     </div>
                   ))}
@@ -165,13 +171,16 @@ function CreateProperty({ setActiveFormCreate }) {
               return (
                 <div key={option.id}>
                   <p>{option.name}</p>
-                  <div className="w-full grid grid-cols-3 gap-1">
+                  <div className="w-full grid grid-cols-3">
                     {option.moreOptions.map((subOption) => (
                       <div
                         key={subOption.name}
-                        className="flex justify-between"
+                        className="flex justify-between m-1 "
                       >
-                        <label htmlFor={subOption.component}>
+                        <label
+                          htmlFor={subOption.component}
+                          className="text-sm"
+                        >
                           {subOption.name}
                         </label>
                         <input
@@ -190,7 +199,19 @@ function CreateProperty({ setActiveFormCreate }) {
             return null;
           })}
         </div>
-        <div className="w-full flex justify-center">
+
+        <div className="w-full grid grid-cols-2">
+          {propertiesOptions.map((option) => {
+            if (option.component === "images") {
+              return (
+                <div key={option.id} className="">
+                  <p className="text-sm">Imagenes</p>
+                  <Cloudinary setFormData={setFormData} formData={formData} />
+                </div>
+              );
+            }
+            return null;
+          })}
           <button
             type="submit"
             className="w-fit text-white py-2 px-10 bg-gray-950 rounded-sm "

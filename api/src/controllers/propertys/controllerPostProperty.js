@@ -24,13 +24,11 @@ const controllerPostProperty = async ({
     !bedrooms ||
     !bathrooms ||
     !area ||
-    !garage ||
     !state ||
     !availability ||
     !name ||
     !description ||
     !address ||
-    !services ||
     !images ||
     !price
   ) {

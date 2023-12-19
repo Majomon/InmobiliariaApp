@@ -12,11 +12,11 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import Dashboard from "./pages/Dashboard";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
-import Dashboard from "./pages/Dashboard";
 
 function App() {
   const location = useLocation();
