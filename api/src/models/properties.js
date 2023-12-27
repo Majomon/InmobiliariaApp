@@ -39,7 +39,6 @@ const propertiesSchema = mongoose.Schema({
   },
   name: {
     type: String,
-
     //unique: true,
   },
   description: {
@@ -60,28 +59,18 @@ const propertiesSchema = mongoose.Schema({
     },
   },
   services: {
-    //Airea acondicionado
-    airConditioning: {
-      type: Boolean,
-      default: false,
-    },
     //Agua corriente
     runningWater: {
       type: Boolean,
       default: false,
     },
-    //Pavimento
-    pavement: {
+    //Aire acondicionado
+    airConditioning: {
       type: Boolean,
       default: false,
     },
-    //Termotanque
-    waterHeater: {
-      type: String,
-      default: false,
-    },
-    //Luz
-    light: {
+    //Balcón
+    balcony: {
       type: Boolean,
       default: false,
     },
@@ -90,13 +79,18 @@ const propertiesSchema = mongoose.Schema({
       type: Boolean,
       default: false,
     },
-    //Desague cloacal
-    sewageDrain: {
+    //Estacionamiento
+    parking: {
       type: Boolean,
       default: false,
     },
-    //Balcon
-    balcony: {
+    //Gas
+    gas: {
+      type: Boolean,
+      default: false,
+    },
+    //Gimnasio
+    gym: {
       type: Boolean,
       default: false,
     },
@@ -105,13 +99,53 @@ const propertiesSchema = mongoose.Schema({
       type: Boolean,
       default: false,
     },
+    //Electricidad
+    light: {
+      type: Boolean,
+      default: false,
+    },
+    //Apto mascotas
+    petfriendly: {
+      type: Boolean,
+      default: false,
+    },
+    //Mucama
+    houseMaid: {
+      type: Boolean,
+      default: false,
+    },
+    //Parrilla
+    grill: {
+      type: Boolean,
+      default: false,
+    },
     //Patio
     yard: {
       type: Boolean,
       default: false,
     },
+    //Piscina
+    swimmingpool: {
+      type: Boolean,
+      default: false,
+    },
+    //Seguridad
+    security: {
+      type: Boolean,
+      default: false,
+    },
+    //Termotanque
+    waterHeater: {
+      type: Boolean,
+      default: false,
+    },
     //Vestidor
     dressingRoom: {
+      type: Boolean,
+      default: false,
+    },
+    //Internet
+    wifi: {
       type: Boolean,
       default: false,
     },
