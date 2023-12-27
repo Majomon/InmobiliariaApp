@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
-import propertiesOptions from "./optionsPostProprty.js";
+import propertiesOptions from "./optionsPostProperty.js";
 
 function CreateProperty({ setActiveFormCreate }) {
   const [formData, setFormData] = useState({
