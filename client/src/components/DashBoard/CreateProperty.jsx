@@ -88,7 +88,7 @@ function CreateProperty({ setActiveFormCreate }) {
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        "http://localhost:8080/properties",
+        `${process.env.REACT_APP_URL_BASE}/properties`,
         newProperty
       );
 
@@ -111,7 +111,6 @@ function CreateProperty({ setActiveFormCreate }) {
 
   return (
     <div className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-gray-950">
-
       <form
         onSubmit={handleSubmit}
         className="w-10/12 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-4 mx-auto my-10 bg-slate-600 rounded"
@@ -189,13 +188,13 @@ function CreateProperty({ setActiveFormCreate }) {
           {propertiesOptions.map((option) => {
             if (option.component === "services") {
               return (
-                <div key={option.id}>
-                  <p>{option.name}</p>
-                  <div className="w-full grid grid-cols-3">
+                <div key={option.id} className="">
+                  <p className="text-lg">{option.name}</p>
+                  <div className="w-full grid grid-cols-3 gap-2">
                     {option.moreOptions.map((subOption) => (
                       <div
                         key={subOption.name}
-                        className="flex justify-between m-1 "
+                        className="flex justify-between py-2 px-6 border"
                       >
                         <label
                           htmlFor={subOption.component}
@@ -209,6 +208,7 @@ function CreateProperty({ setActiveFormCreate }) {
                           name={subOption.component}
                           checked={formData[subOption.component]}
                           onChange={handleChange}
+                          className="w-6 h-6"
                         />
                       </div>
                     ))}
@@ -220,7 +220,7 @@ function CreateProperty({ setActiveFormCreate }) {
           })}
         </div>
 
-        <div className="w-full grid grid-cols-2">
+        <div className="w-full grid grid-cols-2 py-2">
           {propertiesOptions.map((option) => {
             if (option.component === "images") {
               return (
