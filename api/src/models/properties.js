@@ -46,9 +46,6 @@ const propertiesSchema = mongoose.Schema({
     type: String,
   },
   address: {
-    country: {
-      type: String,
-    },
     province: {
       type: String,
     },
