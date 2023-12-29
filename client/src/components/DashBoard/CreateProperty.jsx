@@ -2,9 +2,18 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
-import propertiesOptions from "./optionsPostProperty.js";
+import {
+  propertiesOptions,
+  propertiesDescription,
+  propertiesAddress,
+  propertiesDetail,
+  propertiesImages,
+  propertiesOwner,
+  propertiesPrice,
+  propertiesServices,
+} from "./optionsPostProperty.js";
 
-function CreateProperty({ setActiveFormCreate }) {
+function CreateProperty() {
   const [formData, setFormData] = useState({
     operation: "",
     property: "",
@@ -20,7 +29,6 @@ function CreateProperty({ setActiveFormCreate }) {
     province: "",
     zone: "",
     street: "",
-    postalCode: "",
     runningWater: false,
     airConditioning: false,
     balcony: false,
@@ -40,7 +48,10 @@ function CreateProperty({ setActiveFormCreate }) {
     dressingRoom: false,
     wifi: false,
     images: [],
-    price: 0,
+    currency: "",
+    mount: 0,
+    nombre: "",
+    phone: "",
   });
 
   const newProperty = {
@@ -59,7 +70,6 @@ function CreateProperty({ setActiveFormCreate }) {
       province: formData.province,
       zone: formData.zone,
       street: formData.street,
-      postalCode: formData.postalCode,
     },
     services: {
       runningWater: formData.runningWater,
@@ -82,7 +92,14 @@ function CreateProperty({ setActiveFormCreate }) {
       wifi: formData.wifi,
     },
     images: formData.images,
-    price: formData.price,
+    precio: {
+      currency: formData.currency,
+      mount: formData.mount,
+    },
+    owner: {
+      name: formData.nombre,
+      phone: formData.phone,
+    },
   };
 
   const handleChange = (e) => {
@@ -96,11 +113,12 @@ function CreateProperty({ setActiveFormCreate }) {
   };
 
   const handleSubmit = async (e) => {
+    console.log(newProperty);
     e.preventDefault();
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        `https://inmobiliaria-api-green.vercel.app/properties`,
+        `http://localhost:8080/properties`,
         newProperty
       );
 
@@ -108,7 +126,45 @@ function CreateProperty({ setActiveFormCreate }) {
       if (res.status === 200 || res.status === 201) {
         // Si la solicitud se realizó con éxito, muestra una alerta de propiedad creada
         toast.success("Propiedad creada con exito perrito");
-        setActiveFormCreate(false); // Cerrar el formulario después de enviar la información
+        setFormData({
+          operation: "",
+          property: "",
+          environments: 0,
+          bedrooms: 0,
+          bathrooms: 0,
+          area: 0,
+          garage: 0,
+          state: "",
+          availability: "",
+          name: "",
+          description: "",
+          province: "",
+          zone: "",
+          street: "",
+          runningWater: false,
+          airConditioning: false,
+          balcony: false,
+          kitchen: false,
+          parking: false,
+          gas: false,
+          gym: false,
+          laundry: false,
+          light: false,
+          petfriendly: false,
+          houseMaid: false,
+          grill: false,
+          yard: false,
+          swimmingpool: false,
+          security: false,
+          waterHeater: false,
+          dressingRoom: false,
+          wifi: false,
+          images: [],
+          currency: "",
+          mount: 0,
+          nombre: "",
+          phone: "",
+        });
       } else {
         // En caso de que la solicitud no sea exitosa, muestra una alerta de error
         alert("Error al crear la propiedad");
@@ -118,140 +174,226 @@ function CreateProperty({ setActiveFormCreate }) {
       alert("Hubo un error al procesar la solicitud");
       console.error("Error:", error);
     }
-    setActiveFormCreate(false); // Cerrar el formulario después de enviar la información
   };
 
   return (
-    <div className="w-full h-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-gray-950">
-      <form
-        onSubmit={handleSubmit}
-        className="w-10/12 fixed top-0 left-0 bottom-0 right-0 z-20 flex flex-col p-4 mx-auto my-10 bg-slate-600 rounded"
-      >
-        <button
-          type="button"
-          className="absolute right-0 top-0 m-4"
-          onClick={() => setActiveFormCreate(false)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            className="w-8 h-8 fill-red-600 text-xs"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <h2>Crear Propiedad</h2>
-        <div className="w-full h-full grid grid-cols-4 gap-x-2 ">
-          {propertiesOptions.map((option) => (
-            <div key={option.id} className="flex my-1 justify-center">
-              {option.component !== "services" &&
-                option.component !== "address" &&
-                option.component !== "images" && (
-                  <div className="flex flex-col">
-                    <label htmlFor={option.component} className="text-sm">
-                      {option.name}
-                    </label>
-                    <input
-                      type="text"
-                      id={option.component}
-                      name={option.component}
-                      value={formData[option.component]}
-                      onChange={handleChange}
-                      className="h-6 rounded-sm"
-                    />
-                  </div>
-                )}
+    <div className="w-full h-full">
+      <form className="">
+        <div className="w-full h-full grid grid-cols-2  gap-x-6">
+          {propertiesOptions.map((option, index) => (
+            <div key={`${option.id}_${index}`} className="flex flex-col pb-4">
+              <label htmlFor={option.component} className="text-sm">
+                {option.name}
+              </label>
+              <input
+                type="text"
+                id={option.component}
+                name={option.component}
+                value={formData[option.component]}
+                onChange={handleChange}
+                className="h-6 bg-gray-50 rounded-sm border"
+              />
             </div>
           ))}
         </div>
-        <div className="w-full grid grid-cols-2">
-          {propertiesOptions.map((option) => {
-            if (option.component === "address") {
-              return (
-                <div key={option.id}>
-                  <p className="text-sm">{option.name}</p>
-                  {option.moreOptions.map((subOption) => (
-                    <div
-                      key={subOption.id}
-                      className="w-full flex justify-between px-4 py-1"
-                    >
-                      <label htmlFor={subOption.component} className="text-sm">
-                        {subOption.name}
-                      </label>
+        {/* Descripción */}
+        {propertiesDescription.map((option, index) => (
+          <div
+            key={`${option.id}_${index}`}
+            className="flex flex-col h-64 py-4"
+          >
+            <label htmlFor={option.component} className="text-sm">
+              {option.name}
+            </label>
+            <textarea
+              type="text"
+              id={option.component}
+              name={option.component}
+              value={formData[option.component]}
+              onChange={handleChange}
+              className="h-64  bg-gray-50 rounded-sm border"
+            />
+          </div>
+        ))}
+        {/* Detalles */}
+        <div className="grid grid-cols-5 gap-x-6 py-4">
+          {propertiesDetail.map((option, index) => (
+            <div
+              key={`${option.id}_${index}`}
+              className="w-full h-full flex flex-col "
+            >
+              <label htmlFor={option.component} className="text-sm">
+                {option.name}
+              </label>
+              <input
+                type="number"
+                id={option.component}
+                name={option.component}
+                value={formData[option.component]}
+                onChange={handleChange}
+                className=" bg-gray-50 rounded-sm border"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Dirección */}
+        <div className="w-full h-full">
+          <p className="text-sm py-4">Dirección</p>
+          {propertiesAddress.map((option, index) => (
+            <div
+              key={`${option.id}_${index}`}
+              className="grid grid-cols-3 gap-x-4"
+            >
+              {option.moreOptions.map((subOption, index) => (
+                <div
+                  key={`${option.id}_${index}`}
+                  className="w-full h-full flex flex-col "
+                >
+                  <label htmlFor={subOption.component} className="text-sm">
+                    {subOption.name}
+                  </label>
+                  <input
+                    type="text"
+                    id={subOption.component}
+                    name={subOption.component}
+                    value={formData[subOption.component]}
+                    onChange={handleChange}
+                    className=" bg-gray-50 rounded-sm border"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        {/* Precio y dueño */}
+        <div className="grid grid-cols-2 gap-x-6 py-4">
+          {/* Precio */}
+          <div className="w-full h-full">
+            <p className="text-sm py-4">Precio</p>
+            {propertiesPrice.map((option, index) => (
+              <div
+                key={`${option.id}_${index}`}
+                className="grid grid-cols-2 gap-x-4"
+              >
+                {option.moreOptions.map((subOption, index) => (
+                  <div
+                    key={`${option.id}_${index}`}
+                    className="w-full h-full flex flex-col "
+                  >
+                    <label htmlFor={subOption.component} className="text-sm">
+                      {subOption.name}
+                    </label>
+                    {subOption.component === "mount" ? (
+                      <input
+                        type="number"
+                        id={subOption.component}
+                        name={subOption.component}
+                        value={formData[subOption.component]}
+                        onChange={handleChange}
+                        className=" bg-gray-50 rounded-sm border"
+                      />
+                    ) : (
                       <input
                         type="text"
                         id={subOption.component}
                         name={subOption.component}
                         value={formData[subOption.component]}
                         onChange={handleChange}
-                        className="h-6"
+                        className=" bg-gray-50 rounded-sm border"
                       />
-                    </div>
-                  ))}
-                </div>
-              );
-            }
-            return null;
-          })}
-          {propertiesOptions.map((option) => {
-            if (option.component === "services") {
-              return (
-                <div key={option.id} className="">
-                  <p className="text-lg">{option.name}</p>
-                  <div className="w-full grid grid-cols-3 gap-2">
-                    {option.moreOptions.map((subOption) => (
-                      <div
-                        key={subOption.name}
-                        className="flex justify-between py-2 px-6 border"
-                      >
-                        <label
-                          htmlFor={subOption.component}
-                          className="text-sm"
-                        >
-                          {subOption.name}
-                        </label>
-                        <input
-                          type="checkbox"
-                          id={subOption.component}
-                          name={subOption.component}
-                          checked={formData[subOption.component]}
-                          onChange={handleChange}
-                          className="w-6 h-6"
-                        />
-                      </div>
-                    ))}
+                    )}
                   </div>
-                </div>
-              );
-            }
-            return null;
-          })}
+                ))}
+              </div>
+            ))}
+          </div>
+          {/* Dueño */}
+          <div className="w-full h-full">
+            <p className="text-sm py-4">Dueño</p>
+            {propertiesOwner.map((option, index) => (
+              <div
+                key={`${option.id}_${index}`}
+                className="grid grid-cols-2 gap-x-4"
+              >
+                {option.moreOptions.map((subOption, index) => (
+                  <div
+                    key={`${option.id}_${index}`}
+                    className="w-full h-full flex flex-col "
+                  >
+                    <label htmlFor={subOption.component} className="text-sm">
+                      {subOption.name}
+                    </label>
+                    {subOption.component === "mount" ? (
+                      <input
+                        type="number"
+                        id={subOption.component}
+                        name={subOption.component}
+                        value={formData[subOption.component]}
+                        onChange={handleChange}
+                        className=" bg-gray-50 rounded-sm border"
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        id={subOption.component}
+                        name={subOption.component}
+                        value={formData[subOption.component]}
+                        onChange={handleChange}
+                        className=" bg-gray-50 rounded-sm border"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div className="w-full grid grid-cols-2 py-2">
-          {propertiesOptions.map((option) => {
-            if (option.component === "images") {
-              return (
-                <div key={option.id} className="">
-                  <p className="text-sm">Imagenes</p>
-                  <Cloudinary setFormData={setFormData} formData={formData} />
-                </div>
-              );
-            }
-            return null;
-          })}
-          <button
-            type="submit"
-            className="w-fit text-white py-2 px-10 bg-gray-950 rounded-sm "
-          >
-            CREAR
-          </button>
+        {/* Imagenes */}
+        <div>
+          {propertiesImages.map((option, index) => (
+            <div key={`${option.id}_${index}`} className="">
+              <p className="text-sm">Imagenes</p>
+              <Cloudinary setFormData={setFormData} formData={formData} />
+            </div>
+          ))}
         </div>
+        {/* Servicios */}
+        <div className="w-full h-full">
+          <p className="text-sm py-4">Servicios</p>
+          {propertiesServices.map((option, index) => (
+            <div
+              key={`${option.id}_${index}`}
+              className="grid grid-cols-3 gap-x-20 py-2"
+            >
+              {option.moreOptions.map((subOption, index) => (
+                <div
+                  key={`${option.id}_${index}`}
+                  className="w-full h-full flex justify-between py-2"
+                >
+                  <label htmlFor={subOption.component} className="text-sm">
+                    {subOption.name}
+                  </label>
+                  <input
+                    type="checkbox"
+                    id={subOption.component}
+                    name={subOption.component}
+                    checked={formData[subOption.component]}
+                    onChange={handleChange}
+                    className="w-6 h-6"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="w-full flex justify-center items-center py-10"></div>
       </form>
+      <button
+        onClick={handleSubmit}
+        className="w-fit text-white py-2 px-10 bg-gray-950 rounded-sm "
+      >
+        CREAR
+      </button>
     </div>
   );
 }

@@ -179,6 +179,10 @@ const propertiesSchema = mongoose.Schema({
       type: String,
     },
   },
+  creacion: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Properties", propertiesSchema);

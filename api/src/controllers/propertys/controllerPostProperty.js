@@ -16,6 +16,7 @@ const controllerPostProperty = async ({
   images,
   owner,
   precio,
+  creacion,
 }) => {
   if (
     !operation ||
@@ -28,7 +29,7 @@ const controllerPostProperty = async ({
     !description ||
     !address ||
     !services ||
-    !images 
+    !images
   ) {
     return "Faltan datos";
   }
@@ -50,6 +51,7 @@ const controllerPostProperty = async ({
     images,
     owner,
     precio,
+    creacion
   });
   return newProperty;
 };
