@@ -85,7 +85,7 @@ function DetailInfoBot({ dataAxios, theme }) {
             <h3 className="dark:text-gray-100">Habitaciones</h3>
             <p className="text-gray-400">{dataAxios.bedrooms}</p>
           </div>
-          {dataAxios.garage && (
+          {dataAxios.garage >0 && (
             <div className="flex flex-col md:flex-rowjustify-between py-2">
               <h3 className="dark:text-gray-100">Garage</h3>
               <p className="text-gray-400">{dataAxios.garage}</p>
@@ -108,7 +108,7 @@ function DetailInfoBot({ dataAxios, theme }) {
               services[serviceKey] ? (
                 <div
                   key={serviceKey}
-                  className="flex flex-col justify-center items-center text-center"
+                  className=" w-8 sm:w-10 flex flex-col justify-between  items-center text-center"
                 >
                   <img
                     src={serviceImages[serviceKey].img}

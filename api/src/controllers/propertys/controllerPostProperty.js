@@ -1,5 +1,4 @@
 const Property = require("../../models/properties");
-
 const controllerPostProperty = async ({
   operation,
   property,
@@ -15,8 +14,8 @@ const controllerPostProperty = async ({
   address,
   services,
   images,
-  price,
-  owner
+  owner,
+  precio,
 }) => {
   if (
     !operation ||
@@ -29,8 +28,7 @@ const controllerPostProperty = async ({
     !description ||
     !address ||
     !services ||
-    !images ||
-    !price
+    !images 
   ) {
     return "Faltan datos";
   }
@@ -50,8 +48,8 @@ const controllerPostProperty = async ({
     address,
     services,
     images,
-    price,
-    owner
+    owner,
+    precio,
   });
   return newProperty;
 };

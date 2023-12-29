@@ -159,9 +159,6 @@ const propertiesSchema = mongoose.Schema({
       type: String,
     },
   ],
-  price: {
-    type: Number,
-  },
   //Propietario
   owner: {
     name: {
@@ -169,6 +166,17 @@ const propertiesSchema = mongoose.Schema({
     },
     phone: {
       type: Number,
+    },
+  },
+  precio: {
+    currency: {
+      type: String,
+    },
+    mount: {
+      type: Number,
+    },
+    detail: {
+      type: String,
     },
   },
 });
