@@ -16,7 +16,25 @@ const controllerPostProperty = async ({
   services,
   images,
   price,
+  owner
 }) => {
+  if (
+    !operation ||
+    !property ||
+    !environments ||
+    !bathrooms ||
+    !area ||
+    !state ||
+    !name ||
+    !description ||
+    !address ||
+    !services ||
+    !images ||
+    !price
+  ) {
+    return "Faltan datos";
+  }
+
   const newProperty = await Property.create({
     operation,
     property,
@@ -33,6 +51,7 @@ const controllerPostProperty = async ({
     services,
     images,
     price,
+    owner
   });
   return newProperty;
 };

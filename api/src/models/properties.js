@@ -31,19 +31,23 @@ const propertiesSchema = mongoose.Schema({
   },
   //Disponibilidad
   availability: {
-    type: String,
+    type: Boolean,
+    default: true,
   },
   //Estado
   state: {
     type: String,
   },
+  //Nombre
   name: {
     type: String,
     //unique: true,
   },
+  //Descripción
   description: {
     type: String,
   },
+  //Dirección
   address: {
     province: {
       type: String,
@@ -57,7 +61,7 @@ const propertiesSchema = mongoose.Schema({
     postalCode: {
       type: String,
     },
-  },
+  }, //Servicios
   services: {
     //Agua corriente
     runningWater: {
@@ -157,6 +161,15 @@ const propertiesSchema = mongoose.Schema({
   ],
   price: {
     type: Number,
+  },
+  //Propietario
+  owner: {
+    name: {
+      type: String,
+    },
+    phone: {
+      type: Number,
+    },
   },
 });
 
