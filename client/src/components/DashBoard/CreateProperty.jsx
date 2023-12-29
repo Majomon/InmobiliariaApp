@@ -92,13 +92,13 @@ function CreateProperty() {
       wifi: formData.wifi,
     },
     images: formData.images,
-    precio: {
-      currency: formData.currency,
-      mount: formData.mount,
-    },
     owner: {
       name: formData.nombre,
       phone: formData.phone,
+    },
+    precio: {
+      currency: formData.currency,
+      mount: formData.mount,
     },
   };
 

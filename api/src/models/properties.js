@@ -57,10 +57,7 @@ const propertiesSchema = mongoose.Schema({
     },
     street: {
       type: String,
-    },
-    postalCode: {
-      type: String,
-    },
+    }
   }, //Servicios
   services: {
     //Agua corriente
