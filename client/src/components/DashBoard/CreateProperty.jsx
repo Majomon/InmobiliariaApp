@@ -23,7 +23,6 @@ function CreateProperty() {
     area: 0,
     garage: 0,
     state: "",
-    availability: "",
     name: "",
     description: "",
     province: "",
@@ -63,7 +62,6 @@ function CreateProperty() {
     area: formData.area,
     garage: formData.garage,
     state: formData.state,
-    availability: formData.availability,
     name: formData.name,
     description: formData.description,
     address: {
@@ -135,7 +133,6 @@ function CreateProperty() {
           area: 0,
           garage: 0,
           state: "",
-          availability: "",
           name: "",
           description: "",
           province: "",

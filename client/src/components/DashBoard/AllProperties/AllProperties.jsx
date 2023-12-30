@@ -51,7 +51,7 @@ function AllProperties() {
     return newFecha;
   };
   return (
-    <ul className="w-full h-fit">
+    <lu className="w-full h-fit">
       <Toaster />
 
       <div className="w-full flex justify-between">
@@ -180,7 +180,7 @@ function AllProperties() {
           <h2 className="">No hay resultados encontrados</h2>
         </div>
       )}
-    </ul>
+    </lu>
   );
 }
 
