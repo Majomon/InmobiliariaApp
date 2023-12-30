@@ -6,7 +6,7 @@ import LogoLight from "../../assets/lightMode.png";
 const options = [
   { name: "Inicio", to: "/" },
   { name: "Alquiler", to: "/search?operation=Alquiler" },
-  { name: "Alquler temporario", to: "/search?operation=AlquilerTemporario" },
+  { name: "Alquiler temporario", to: "/search?operation=AlquilerTemporario" },
 ];
 
 // eslint-disable-next-line react/prop-types

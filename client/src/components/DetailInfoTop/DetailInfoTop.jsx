@@ -112,14 +112,12 @@ function DetailInfoTop({ dataAxios }) {
               {dataAxios.operation === "Venta" ? (
                 <div>
                   <p className="text-gray-400">PRECIO VENTA</p>
-                  <h3 className="text-base font-bold dark:text-gray-100">
-                    {dataAxios.precio.currency}
+                  <div className="flex gap-x-1">
+                    <strong className="text-base font-bold dark:text-gray-100">
+                      {dataAxios.precio.currency}
+                    </strong>
                     <span>{dataAxios.precio.mount}</span>
-                    <span>
-                      {dataAxios.precio.detail &&
-                        ` + ${dataAxios.precio.detail}`}
-                    </span>
-                  </h3>
+                  </div>
                 </div>
               ) : (
                 <div>
@@ -129,10 +127,9 @@ function DetailInfoTop({ dataAxios }) {
                       {dataAxios.precio.currency}
                     </strong>
                     <span>{dataAxios.precio.mount}</span>
-
                     <span>
-                      {dataAxios.precio.detail &&
-                        ` + ${dataAxios.precio.detail}`}
+                      {dataAxios.precio.additionalExpense &&
+                        ` + ${dataAxios.precio.additionalExpense}`}
                     </span>
                   </div>
                   <p className="text-gray-400">Por mes</p>

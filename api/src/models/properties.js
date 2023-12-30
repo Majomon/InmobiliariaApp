@@ -57,7 +57,7 @@ const propertiesSchema = mongoose.Schema({
     },
     street: {
       type: String,
-    }
+    },
   }, //Servicios
   services: {
     //Agua corriente
@@ -172,7 +172,7 @@ const propertiesSchema = mongoose.Schema({
     mount: {
       type: Number,
     },
-    detail: {
+    additionalExpense: {
       type: String,
     },
   },

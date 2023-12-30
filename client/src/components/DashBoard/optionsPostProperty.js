@@ -1,8 +1,23 @@
 export const propertiesOptions = [
   { id: 1, component: "name", name: "Nombre de la propiedad" },
-  { id: 2, component: "operation", name: "Operación" },
-  { id: 3, component: "property", name: "Tipo de propiedad" },
-  { id: 4, component: "state", name: "Estado" },
+  {
+    id: 2,
+    component: "operation",
+    name: "Operación",
+    options: ["Alquiler", "Alquiler temporario"],
+  },
+  {
+    id: 3,
+    component: "property",
+    name: "Tipo de propiedad",
+    options: ["Departamento", "Casa", "PH","Presidencial"],
+  },
+  {
+    id: 4,
+    component: "state",
+    name: "Estado",
+    options: ["Bueno", "Muy bueno", "Excelente"],
+  },
 ];
 
 export const propertiesDescription = [
@@ -38,6 +53,7 @@ export const propertiesPrice = [
     moreOptions: [
       { id: 121, component: "currency", name: "Moneda", options: ["$", "U$S"] },
       { id: 122, component: "mount", name: "Monto" },
+      { id: 123, component: "additionalExpense", name: "Gastos adicionales" },
     ],
   },
 ];

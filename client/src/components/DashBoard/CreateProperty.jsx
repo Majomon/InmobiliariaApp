@@ -15,14 +15,14 @@ import {
 
 function CreateProperty() {
   const [formData, setFormData] = useState({
-    operation: "",
-    property: "",
+    operation: "Alquiler",
+    property: "Departamento",
     environments: 0,
     bedrooms: 0,
     bathrooms: 0,
     area: 0,
     garage: 0,
-    state: "",
+    state: "Bueno",
     name: "",
     description: "",
     province: "",
@@ -49,6 +49,7 @@ function CreateProperty() {
     images: [],
     currency: "$",
     mount: 0,
+    additionalExpense: "",
     nombre: "",
     phone: "",
   });
@@ -97,6 +98,7 @@ function CreateProperty() {
     precio: {
       currency: formData.currency,
       mount: formData.mount,
+      additionalExpense: formData.additionalExpense,
     },
   };
 
@@ -124,14 +126,14 @@ function CreateProperty() {
         // Si la solicitud se realizó con éxito, muestra una alerta de propiedad creada
         toast.success("Propiedad creada con exito perrito");
         setFormData({
-          operation: "",
-          property: "",
+          operation: "Alquiler",
+          property: "Departamento",
           environments: 0,
           bedrooms: 0,
           bathrooms: 0,
           area: 0,
           garage: 0,
-          state: "",
+          state: "Bueno",
           name: "",
           description: "",
           province: "",
@@ -158,6 +160,7 @@ function CreateProperty() {
           images: [],
           currency: "$",
           mount: 0,
+          additionalExpense: "",
           nombre: "",
           phone: "",
         });
@@ -177,18 +180,34 @@ function CreateProperty() {
       <form className="">
         <div className="w-full h-full grid grid-cols-2  gap-x-6">
           {propertiesOptions.map((option, index) => (
-            <div key={`${option.id}_${index}`} className="flex flex-col pb-4">
+            <div key={`${option.id}_${index}`} className="flex flex-col py-4">
               <label htmlFor={option.component} className="text-sm">
                 {option.name}
               </label>
-              <input
-                type="text"
-                id={option.component}
-                name={option.component}
-                value={formData[option.component]}
-                onChange={handleChange}
-                className="h-6 bg-gray-50 rounded-sm border"
-              />
+              {option.options ? (
+                <select
+                  id={option.component}
+                  name={option.component}
+                  value={formData[option.component]}
+                  onChange={handleChange}
+                  className="bg-gray-50 rounded-sm border"
+                >
+                  {option.options.map((optionValue, optionIndex) => (
+                    <option key={optionIndex} value={optionValue}>
+                      {optionValue}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  id={option.component}
+                  name={option.component}
+                  value={formData[option.component]}
+                  onChange={handleChange}
+                  className="bg-gray-50 rounded-sm border"
+                />
+              )}
             </div>
           ))}
         </div>
