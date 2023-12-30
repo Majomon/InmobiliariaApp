@@ -2,7 +2,7 @@ import properties from "../opcionesMenuLateral";
 
 function MenuLateralDashBoard({ handleButtonClick, activeComponent }) {
   return (
-    <lu className="w-3/12 fixed top-0 left-0 min-h-screen flex flex-col pl-24  pt-10 gap-4 bg-[#252728]">
+    <ul className="w-3/12 fixed top-0 left-0 min-h-screen flex flex-col pl-24  pt-10 gap-4 bg-[#252728] list-none">
       {properties.map((elem) => (
         <li
           className="cursor-pointer"
@@ -23,7 +23,7 @@ function MenuLateralDashBoard({ handleButtonClick, activeComponent }) {
           </div>
         </li>
       ))}
-    </lu>
+    </ul>
   );
 }
 
