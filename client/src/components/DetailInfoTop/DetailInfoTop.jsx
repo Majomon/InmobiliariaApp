@@ -114,18 +114,27 @@ function DetailInfoTop({ dataAxios }) {
                   <p className="text-gray-400">PRECIO VENTA</p>
                   <h3 className="text-base font-bold dark:text-gray-100">
                     {dataAxios.precio.currency}
-                    {dataAxios.precio.mount}
-                    {dataAxios.precio.detail && ` + ${dataAxios.precio.detail}`}
+                    <span>{dataAxios.precio.mount}</span>
+                    <span>
+                      {dataAxios.precio.detail &&
+                        ` + ${dataAxios.precio.detail}`}
+                    </span>
                   </h3>
                 </div>
               ) : (
                 <div>
                   <p className="text-gray-400">PRECIO ALQUILER</p>
-                  <h3 className="text-base font-bold dark:text-gray-100">
-                    {dataAxios.precio.currency}
-                    {dataAxios.precio.mount}
-                    {dataAxios.precio.detail && ` + ${dataAxios.precio.detail}`}
-                  </h3>
+                  <div className="flex gap-x-1">
+                    <strong className="text-base font-bold dark:text-gray-100">
+                      {dataAxios.precio.currency}
+                    </strong>
+                    <span>{dataAxios.precio.mount}</span>
+
+                    <span>
+                      {dataAxios.precio.detail &&
+                        ` + ${dataAxios.precio.detail}`}
+                    </span>
+                  </div>
                   <p className="text-gray-400">Por mes</p>
                 </div>
               )}

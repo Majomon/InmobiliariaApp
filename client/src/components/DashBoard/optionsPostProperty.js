@@ -36,7 +36,7 @@ export const propertiesPrice = [
     component: "price",
     name: "Precio",
     moreOptions: [
-      { id: 121, component: "currency", name: "Moneda" },
+      { id: 121, component: "currency", name: "Moneda", options: ["$", "U$S"] },
       { id: 122, component: "mount", name: "Monto" },
     ],
   },

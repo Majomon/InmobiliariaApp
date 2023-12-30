@@ -47,7 +47,7 @@ function CreateProperty() {
     dressingRoom: false,
     wifi: false,
     images: [],
-    currency: "",
+    currency: "$",
     mount: 0,
     nombre: "",
     phone: "",
@@ -111,7 +111,6 @@ function CreateProperty() {
   };
 
   const handleSubmit = async (e) => {
-    console.log(newProperty);
     e.preventDefault();
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
@@ -157,7 +156,7 @@ function CreateProperty() {
           dressingRoom: false,
           wifi: false,
           images: [],
-          currency: "",
+          currency: "$",
           mount: 0,
           nombre: "",
           phone: "",
@@ -272,23 +271,30 @@ function CreateProperty() {
                 key={`${option.id}_${index}`}
                 className="grid grid-cols-2 gap-x-4"
               >
-                {option.moreOptions.map((subOption, index) => (
+                {option.moreOptions.map((subOption, subIndex) => (
                   <div
-                    key={`${option.id}_${index}`}
+                    key={`${option.id}_${subOption.id}_${subIndex}`}
                     className="w-full h-full flex flex-col "
                   >
                     <label htmlFor={subOption.component} className="text-sm">
                       {subOption.name}
                     </label>
-                    {subOption.component === "mount" ? (
-                      <input
-                        type="number"
+                    {subOption.component === "currency" ? (
+                      <select
                         id={subOption.component}
                         name={subOption.component}
                         value={formData[subOption.component]}
                         onChange={handleChange}
-                        className=" bg-gray-50 rounded-sm border"
-                      />
+                        className="bg-gray-50 rounded-sm border"
+                      >
+                        {subOption.options.map(
+                          (currencyOption, currencyIndex) => (
+                            <option key={currencyIndex} value={currencyOption}>
+                              {currencyOption}
+                            </option>
+                          )
+                        )}
+                      </select>
                     ) : (
                       <input
                         type="text"
@@ -296,7 +302,7 @@ function CreateProperty() {
                         name={subOption.component}
                         value={formData[subOption.component]}
                         onChange={handleChange}
-                        className=" bg-gray-50 rounded-sm border"
+                        className="bg-gray-50 rounded-sm border"
                       />
                     )}
                   </div>
@@ -360,7 +366,7 @@ function CreateProperty() {
           {propertiesServices.map((option, index) => (
             <div
               key={`${option.id}_${index}`}
-              className="grid grid-cols-3 gap-x-20 py-2"
+              className="grid grid-cols-3 gap-x-20"
             >
               {option.moreOptions.map((subOption, index) => (
                 <div
@@ -383,14 +389,15 @@ function CreateProperty() {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center items-center py-10"></div>
       </form>
-      <button
-        onClick={handleSubmit}
-        className="w-fit text-white py-2 px-10 bg-gray-950 rounded-sm "
-      >
-        CREAR
-      </button>
+      <div className="w-full h-fit py-16 flex justify-center">
+        <button
+          onClick={handleSubmit}
+          className="w-8/12 text-white py-2 px-10 bg-gray-950 rounded-sm "
+        >
+          CREAR
+        </button>
+      </div>
     </div>
   );
 }
