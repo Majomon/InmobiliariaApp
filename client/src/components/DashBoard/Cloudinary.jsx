@@ -27,7 +27,7 @@ function Cloudinary({ setFormData, formData }) {
     for (let file of files) {
       formData.append("img", file);
     }
-
+    
     const res = await axios.post("/cloudinary", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
