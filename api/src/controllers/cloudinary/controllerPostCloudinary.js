@@ -1,14 +1,29 @@
-const cloudinary = require("cloudinary").v2;
-// Importar el parser desde cloudinary.js
-
 const controllerPostCloudinary = async (req) => {
-  // Recibir el objeto req como parámetro
-  const images = req.files; // Acceder al arreglo de archivos
+  const images = req.files; 
   if (!images || images.length === 0) {
     throw new Error("No se subieron las imágenes");
   }
 
-  // Subir las imágenes a Cloudinary y obtener las URL seguras
+  // Obtener las URLs de las imágenes subidas
+  const urls = req.files.map((file) => {
+    return file.path; // O utiliza la propiedad 'secure_url' si necesitas la URL de Cloudinary
+  });
+
+  // Devolver el arreglo de URLs como parte de la respuesta
+  return { message: "Imágenes subidas", urls: urls };
+};
+
+module.exports = controllerPostCloudinary;
+
+/* .
+const cloudinary = require("cloudinary").v2;
+
+const controllerPostCloudinary = async (req) => {
+  const images = req.files;
+  if (!images || images.length === 0) {
+    throw new Error("No se subieron las imágenes");
+  }
+
   const urls = await Promise.all(
     images.map(
       (image) =>
@@ -27,8 +42,8 @@ const controllerPostCloudinary = async (req) => {
     )
   );
 
-  // Devolver el arreglo de URLs como parte de la respuesta
   return { message: "Imágenes subidas", urls: urls };
 };
 
 module.exports = controllerPostCloudinary;
+ */
