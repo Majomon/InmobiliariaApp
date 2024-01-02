@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
-import Cloudinary from "../../components/DashBoard/Cloudinary.jsx";
+import Cloudinary from "../Cloudinary.jsx";
 import {
   propertiesOptions,
   propertiesDescription,
@@ -11,7 +11,7 @@ import {
   propertiesOwner,
   propertiesPrice,
   propertiesServices,
-} from "./optionsPostProperty.js";
+} from "../optionsPostProperty.js";
 
 function CreateProperty() {
   const [formData, setFormData] = useState({
@@ -178,6 +178,7 @@ function CreateProperty() {
   return (
     <div className="w-full h-full">
       <form className="">
+        {/* Primeras opciones */}
         <div className="w-full h-full grid grid-cols-2  gap-x-6">
           {propertiesOptions.map((option, index) => (
             <div key={`${option.id}_${index}`} className="flex flex-col py-4">

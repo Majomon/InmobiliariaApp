@@ -3,7 +3,7 @@ import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDa
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
 import { getAllProperties, getPropertiesId } from "../../../redux/actions";
-import CreateProperty from "../CreateProperty";
+import CreateProperty from "../CreateProperty/CreateProperty";
 import { Toaster, toast } from "sonner";
 import { Link } from "react-router-dom";
 
@@ -51,7 +51,7 @@ function AllProperties() {
     return newFecha;
   };
   return (
-    <lu className="w-full h-fit">
+    <ul className="w-full h-fit">
       <Toaster />
 
       <div className="w-full flex justify-between">
@@ -180,7 +180,7 @@ function AllProperties() {
           <h2 className="">No hay resultados encontrados</h2>
         </div>
       )}
-    </lu>
+    </ul>
   );
 }
 
