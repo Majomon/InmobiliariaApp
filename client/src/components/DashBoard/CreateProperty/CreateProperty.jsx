@@ -3,11 +3,11 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Cloudinary from "../Cloudinary.jsx";
 import {
-  propertiesOptions,
-  propertiesDescription,
   propertiesAddress,
+  propertiesDescription,
   propertiesDetail,
   propertiesImages,
+  propertiesOptions,
   propertiesOwner,
   propertiesPrice,
   propertiesServices,
