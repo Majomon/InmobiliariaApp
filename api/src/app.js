@@ -11,8 +11,11 @@ const routerCloudinary = require("./routes/cloudinary.routes");
 
 const app = express();
 
+// Habilitar CORS usando el middleware 'cors'
+app.use(cors());
+
 // Middleware para configurar los encabezados CORS
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
     "https://inmobiliaria-client.vercel.app"
@@ -21,10 +24,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
-
+ */
 //Middlewares
 app.use(express.json());
-app.use(cors());
 app.use(morgan("dev"));
 
 // Routes
