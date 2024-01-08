@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import appFirebase from "../utils/firebase";
+import appFirebase from "../../utils/firebase";
 const storage = getStorage(appFirebase);
 
-function ImgFirebase() {
-  const [files, setFiles] = useState([]); // Estado para almacenar los archivos
+function ImgFirebase({ setFormData }) {
   const [imageUrls, setImageUrls] = useState([]); // Estado para almacenar las URLs de las imágenes
+  const [loading, setLoading] = useState(false); // Inicialmente, no estamos cargando
+
+  useEffect(() => {
+    if (imageUrls.length > 0) {
+      setFormData((prevData) => ({
+        ...prevData,
+        images: imageUrls,
+      }));
+  
+    } 
+  }, [imageUrls]);
 
   const fileHandler = async (e) => {
     const fileList = Array.from(e.target.files); // Obtener la lista de archivos
-    setFiles(fileList); // Actualizar el estado con la lista de archivos
+    setLoading(true);
 
     // Subir cada archivo al almacenamiento y obtener sus URL
     const uploadTasks = fileList.map(async (file) => {
@@ -22,6 +32,7 @@ function ImgFirebase() {
     Promise.all(uploadTasks)
       .then((urls) => {
         setImageUrls(urls); // Actualizar el estado con la lista de URL de las imágenes
+        setLoading(false);
         console.log("URLs de las imágenes subidas:", urls);
       })
       .catch((error) => {
@@ -30,26 +41,28 @@ function ImgFirebase() {
   };
 
   return (
-    <div className="my-20">
-      <h3>Agregar imágenes</h3>
-      <input type="file" multiple onChange={fileHandler} />
-      {files.length > 0 && (
-        <div>
-          <h4>Archivos seleccionados:</h4>
-          <ul>
-            {files.map((file, index) => (
-              <li key={index}>{file.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+    <div className="">
+      <div className="w-full p-2 grid grid-cols-3">
+        <input type="file" multiple onChange={fileHandler} />
+
+        {loading && (
+          <div className="w-full flex justify-center">
+            <p className="py-2 border-b-2">Subiendo...</p>
+          </div>
+        )}
+      </div>
+
       {imageUrls.length > 0 && (
         <div>
-          <h4>URLs de las imágenes subidas:</h4>
-          <ul>
+        <p className="text-sm">Imágenes subidas:</p>
+          <ul className="grid grid-cols-6">
             {imageUrls.map((url, index) => (
               <li key={index}>
-                <img src={url} alt={`Imagen ${index}`} width="100" />
+                <img
+                  src={url}
+                  alt={`Imagen ${index}`}
+                  className="w-[150px] h-[100px]"
+                />
               </li>
             ))}
           </ul>

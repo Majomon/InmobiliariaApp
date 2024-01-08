@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 import Cloudinary from "../Cloudinary.jsx";
+import ImgFirebase from "../ImgFirebase";
+
 import {
   propertiesAddress,
   propertiesDescription,
@@ -136,7 +138,7 @@ function CreateProperty() {
       province &&
       zone &&
       street &&
-      images.length>0 &&
+      images.length > 0 &&
       currency &&
       mount &&
       nombre &&
@@ -419,7 +421,8 @@ function CreateProperty() {
           {propertiesImages.map((option, index) => (
             <div key={`${option.id}_${index}`} className="">
               <p className="text-sm">Imagenes</p>
-              <Cloudinary setFormData={setFormData} formData={formData} />
+              {/*             <Cloudinary setFormData={setFormData} formData={formData} /> */}
+              <ImgFirebase setFormData={setFormData} />
             </div>
           ))}
         </div>

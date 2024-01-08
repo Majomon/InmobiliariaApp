@@ -17,7 +17,6 @@ import Detail from "./pages/Detail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
-import Prueba from "./pages/prueba";
 
 function App() {
   const location = useLocation();
@@ -70,8 +69,6 @@ function App() {
         <Route path="/search" element={<Search theme={theme} />} />
         <Route path="/adminYosef" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/prueba" element={<Prueba />} />
-
         <Route path="*" element={<NotFoundPage theme={theme} />} />
       </Routes>
       {shouldRenderNavbar && <Footer theme={theme} />}
