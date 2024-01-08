@@ -6,6 +6,8 @@ const routerProperty = require("./routes/property.routes");
 const routerResend = require("./routes/resend.routes");
 const routerSearch = require("./routes/search.routes");
 const routerCloudinary = require("./routes/cloudinary.routes");
+const routerFirebase = require("./routes/firebase.routes");
+
 
 //Rutas
 
@@ -35,5 +37,7 @@ app.use("/properties", routerProperty);
 app.use("/resend", routerResend);
 app.use("/search", routerSearch);
 app.use("/cloudinary", routerCloudinary);
+app.use("/firebase", routerFirebase);
+
 
 module.exports = app;
