@@ -459,7 +459,10 @@ function CreateProperty() {
       <div className="w-full h-fit py-16 flex justify-center">
         <button
           onClick={handleSubmit}
-          className={`w-8/12 py-2 px-10 rounded-sm text-white bg-gray-950`}
+          disabled={!allFieldsCompleted()}
+          className={` py-2 px-10 rounded-sm text-white ${
+            allFieldsCompleted() ? "w-8/12 bg-gray-800" : "w-6/12 bg-gray-400"
+          }`}
         >
           CREAR
         </button>
