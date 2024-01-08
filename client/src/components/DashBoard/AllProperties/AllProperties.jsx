@@ -1,15 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDashboard";
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Toaster } from "sonner";
 import {
   getAllProperties,
-  getPropertiesId,
-  putProperty,
+  putProperty
 } from "../../../redux/actions";
-import CreateProperty from "../CreateProperty/CreateProperty";
-import { Toaster, toast } from "sonner";
-import { Link } from "react-router-dom";
 
 function AllProperties() {
   const properties = useSelector((state) => state.propiedades);
@@ -36,11 +33,11 @@ function AllProperties() {
     }
   };
 
-  const handleToggle = (propertyId, activeProperty) => {
+  const handleToggle = (propertyId, availability) => {
     setTimeout(() => {
       dispatch(getAllProperties());
     }, 300);
-    dispatch(putProperty(propertyId, { activeProperty: `${!activeProperty}` }));
+    dispatch(putProperty(propertyId, { availability: `${!availability}` }));
   };
 
   const newDate = (date) => {
