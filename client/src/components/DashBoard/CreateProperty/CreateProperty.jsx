@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
-import Cloudinary from "../Cloudinary.jsx";
 import ImgFirebase from "../ImgFirebase";
 
 import {
@@ -448,7 +447,7 @@ function CreateProperty() {
                     name={subOption.component}
                     checked={formData[subOption.component]}
                     onChange={handleChange}
-                    className="w-6 h-6"
+                    className="w-6 h-6 cursor-pointer"
                   />
                 </div>
               ))}

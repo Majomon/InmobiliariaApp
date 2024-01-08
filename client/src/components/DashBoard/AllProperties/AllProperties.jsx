@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardPropertiesDashboard from "../CardPropertiesDashboard/CardPropertiesDashboard";
 import { Switch } from "@headlessui/react";
 import { useState } from "react";
-import { getAllProperties, getPropertiesId } from "../../../redux/actions";
+import {
+  getAllProperties,
+  getPropertiesId,
+  putProperty,
+} from "../../../redux/actions";
 import CreateProperty from "../CreateProperty/CreateProperty";
 import { Toaster, toast } from "sonner";
 import { Link } from "react-router-dom";
@@ -12,6 +16,7 @@ function AllProperties() {
   const orderProperties = properties.sort((a, b) => b.id - a.id);
   const [currentPage, setCurrentPage] = useState(0);
   const [countPage, setCountPage] = useState(1);
+  const dispatch = useDispatch();
 
   const pagination = () => {
     return properties.slice(currentPage, currentPage + 8);
@@ -35,9 +40,7 @@ function AllProperties() {
     setTimeout(() => {
       dispatch(getAllProperties());
     }, 300);
-    dispatch(
-      getPropertiesId(propertyId, { activeProperty: `${!activeProperty}` })
-    );
+    dispatch(putProperty(propertyId, { activeProperty: `${!activeProperty}` }));
   };
 
   const newDate = (date) => {
