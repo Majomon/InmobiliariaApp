@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import appFirebase from "../../utils/firebase";
+import { v4 as uuidv4 } from "uuid";
 const storage = getStorage(appFirebase);
 
 function ImgFirebase({ setFormData }) {
@@ -13,8 +14,7 @@ function ImgFirebase({ setFormData }) {
         ...prevData,
         images: imageUrls,
       }));
-  
-    } 
+    }
   }, [imageUrls]);
 
   const fileHandler = async (e) => {
@@ -23,7 +23,9 @@ function ImgFirebase({ setFormData }) {
 
     // Subir cada archivo al almacenamiento y obtener sus URL
     const uploadTasks = fileList.map(async (file) => {
-      const storageRef = ref(storage, `Ruslux/${file.name}`);
+      const uniqueFileName = `${uuidv4()}_${file.name}`;
+      const storageRef = ref(storage, `Ruslux/${uniqueFileName}`);
+      /*   const storageRef = ref(storage, `Ruslux/${file.name}`); */
       await uploadBytes(storageRef, file);
       return getDownloadURL(storageRef);
     });
@@ -54,7 +56,7 @@ function ImgFirebase({ setFormData }) {
 
       {imageUrls.length > 0 && (
         <div>
-        <p className="text-sm">Imágenes subidas:</p>
+          <p className="text-sm">Imágenes subidas:</p>
           <ul className="grid grid-cols-6">
             {imageUrls.map((url, index) => (
               <li key={index}>
