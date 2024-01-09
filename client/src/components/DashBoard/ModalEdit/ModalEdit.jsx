@@ -3,7 +3,6 @@ import {
   propertiesAddress,
   propertiesDescription,
   propertiesDetail,
-  propertiesImages,
   propertiesOptions,
   propertiesOwner,
   propertiesPrice,
@@ -12,6 +11,15 @@ import {
 
 function ModalEdit({ propertyFound, setActiveEdit }) {
   const [editForm, setEditForm] = useState({ ...propertyFound });
+
+  const upParrayImg = (index) => {
+    const updatedImages = [...editForm.images];
+    updatedImages.splice(index, 1);
+    setEditForm({
+      ...editForm,
+      images: updatedImages,
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -70,11 +78,11 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
 
   return (
     <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
-      <div className="w-11/12 min-h-screen mx-auto my-10 bg-gray-100 rounded-lg relative">
+      <div className="w-full mx-auto bg-gray-100 rounded-lg relative">
         {/* Ícono de cerrar */}
         <button
           type="button"
-          className="absolute right-0 top-0"
+          className="absolute right-0 top-0 z-10"
           onClick={() => setActiveEdit(false)}
         >
           <svg
@@ -86,13 +94,13 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
         <form>
           <div className="pt-12 px-10">
             {/* Primeras opciones */}
-            <div className="w-full h-full grid grid-cols-4  gap-x-6">
+            <div className="w-full h-full grid grid-cols-4 gap-x-6 pb-4 ">
               {propertiesOptions.map((option, index) => (
-                <div
-                  key={`${option.id}_${index}`}
-                  className="flex flex-col py-4"
-                >
-                  <label htmlFor={option.component} className="text-sm">
+                <div key={`${option.id}_${index}`} className="flex flex-col">
+                  <label
+                    htmlFor={option.component}
+                    className="text-sm font-bold"
+                  >
                     {option.name}
                   </label>
                   {option.options ? (
@@ -122,49 +130,58 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
                 </div>
               ))}
             </div>
-            {/* Descripción */}
-            {propertiesDescription.map((option, index) => (
-              <div
-                key={`${option.id}_${index}`}
-                className="flex flex-col h-40 py-1"
-              >
-                <label htmlFor={option.component} className="text-sm">
-                  {option.name}
-                </label>
-                <textarea
-                  type="text"
-                  id={option.component}
-                  name={option.component}
-                  value={editForm[option.component]}
-                  onChange={handleChange}
-                  className="h-64  bg-gray-50 rounded-sm border"
-                />
-              </div>
-            ))}
-            {/* Detalles */}
-            <div className="grid grid-cols-5 gap-x-6 py-4">
-              {propertiesDetail.map((option, index) => (
+            {/* Descripción y detalles */}
+            <div className="grid grid-cols-2 gap-x-2 my-2 pb-2">
+              {/* Descripción */}
+              {propertiesDescription.map((option, index) => (
                 <div
                   key={`${option.id}_${index}`}
-                  className="w-full h-full flex flex-col "
+                  className="flex flex-col h-40"
                 >
-                  <label htmlFor={option.component} className="text-sm">
+                  <label
+                    htmlFor={option.component}
+                    className="text-sm font-bold"
+                  >
                     {option.name}
                   </label>
-                  <input
-                    type="number"
+                  <textarea
+                    type="text"
                     id={option.component}
                     name={option.component}
                     value={editForm[option.component]}
                     onChange={handleChange}
-                    className=" bg-gray-50 rounded-sm border"
+                    className="h-64  bg-gray-50 rounded-sm border"
                   />
                 </div>
               ))}
+              {/* Detalles */}
+              <div className="grid grid-cols-2 gap-x-6">
+                {propertiesDetail.map((option, index) => (
+                  <div
+                    key={`${option.id}_${index}`}
+                    className="w-full h-full flex flex-col "
+                  >
+                    <label
+                      htmlFor={option.component}
+                      className="text-sm font-bold"
+                    >
+                      {option.name}
+                    </label>
+                    <input
+                      type="number"
+                      id={option.component}
+                      name={option.component}
+                      value={editForm[option.component]}
+                      onChange={handleChange}
+                      className=" bg-gray-50 rounded-sm border"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             {/* Dirección */}
-            <div className="w-full h-full">
-              <p className="text-sm py-4">Dirección</p>
+            <div className="w-full h-full my-2 pb-2">
+              <p className="text-sm font-bold mb-2">Dirección</p>
               {propertiesAddress.map((addressOption, addressIndex) => (
                 <div
                   key={`${addressOption.id}_${addressIndex}`}
@@ -175,7 +192,10 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
                       key={`${addressOption.id}_${subIndex}`}
                       className="w-full h-full flex flex-col"
                     >
-                      <label htmlFor={subOption.component} className="text-sm">
+                      <label
+                        htmlFor={subOption.component}
+                        className="text-sm font-bold"
+                      >
                         {subOption.name}
                       </label>
                       <input
@@ -191,145 +211,153 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
                 </div>
               ))}
             </div>
-            {/* Sección de Precio */}
-            {propertiesPrice.map((option, index) => (
-              <div
-                key={`${option.id}_${index}`}
-                className="grid grid-cols-2 gap-x-4"
-              >
-                {option.moreOptions.map((subOption, subIndex) => (
-                  <div
-                    key={`${option.id}_${subOption.id}_${subIndex}`}
-                    className="w-full h-full flex flex-col"
-                  >
-                    <label htmlFor={subOption.component} className="text-sm">
-                      {subOption.name}
-                    </label>
-                    {subOption.component === "currency" ? (
-                      <select
-                        id={subOption.component}
-                        name={subOption.component}
-                        value={editForm.precio[subOption.component]}
-                        onChange={handleChange}
-                        className="bg-gray-50 rounded-sm border"
+            <div className="w-full h-full my-2 pb-2">
+              {/*Precio */}
+              {propertiesPrice.map((option, index) => (
+                <div
+                  key={`${option.id}_${index}`}
+                  className="grid grid-cols-2 gap-x-4"
+                >
+                  {option.moreOptions.map((subOption, subIndex) => (
+                    <div
+                      key={`${option.id}_${subOption.id}_${subIndex}`}
+                      className="w-full h-full flex flex-col"
+                    >
+                      <label
+                        htmlFor={subOption.component}
+                        className="text-sm font-bold"
                       >
-                        {subOption.options.map(
-                          (currencyOption, currencyIndex) => (
-                            <option key={currencyIndex} value={currencyOption}>
-                              {currencyOption}
-                            </option>
-                          )
-                        )}
-                      </select>
-                    ) : (
-                      <input
-                        type="text"
-                        id={subOption.component}
-                        name={subOption.component}
-                        value={editForm.precio[subOption.component]}
-                        onChange={handleChange}
-                        className="bg-gray-50 rounded-sm border"
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-            {/* Precio y dueño */}
-            <div className="grid grid-cols-2 gap-x-6 py-4">
-              {/* Precio */}
-              <div className="w-full h-full">
-                <p className="text-sm py-4">Precio</p>
-                {propertiesPrice.map((option, index) => (
-                  <div
-                    key={`${option.id}_${index}`}
-                    className="grid grid-cols-2 gap-x-4"
-                  >
-                    {option.moreOptions.map((subOption, subIndex) => (
-                      <div
-                        key={`${option.id}_${subOption.id}_${subIndex}`}
-                        className="w-full h-full flex flex-col "
-                      >
-                        <label
-                          htmlFor={subOption.component}
-                          className="text-sm"
+                        {subOption.name}
+                      </label>
+                      {subOption.component === "currency" ? (
+                        <select
+                          id={subOption.component}
+                          name={subOption.component}
+                          value={editForm.precio[subOption.component]}
+                          onChange={handleChange}
+                          className="bg-gray-50 rounded-sm border"
                         >
-                          {subOption.name}
-                        </label>
-                        {subOption.component === "currency" ? (
-                          <select
-                            id={subOption.component}
-                            name={subOption.component}
-                            value={editForm.precio[subOption.component]}
-                            onChange={handleChange}
-                            className="bg-gray-50 rounded-sm border"
-                          >
-                            {subOption.options.map(
-                              (currencyOption, currencyIndex) => (
-                                <option
-                                  key={currencyIndex}
-                                  value={currencyOption}
-                                >
-                                  {currencyOption}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        ) : (
-                          <input
-                            type="text"
-                            id={subOption.component}
-                            name={subOption.component}
-                            value={editForm.precio[subOption.component]}
-                            onChange={handleChange}
-                            className="bg-gray-50 rounded-sm border"
-                          />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              {/* Dueño */}
-              <div className="w-full h-full">
-                <p className="text-sm py-4">Dueño</p>
-                {propertiesOwner.map((option, index) => (
-                  <div
-                    key={`${option.id}_${index}`}
-                    className="grid grid-cols-2 gap-x-4"
-                  >
-                    {option.moreOptions.map((subOption, index) => (
-                      <div
-                        key={`${option.id}_${index}`}
-                        className="w-full h-full flex flex-col "
-                      >
-                        <label
-                          htmlFor={subOption.component}
-                          className="text-sm"
-                        >
-                          {subOption.name}
-                        </label>
+                          {subOption.options.map(
+                            (currencyOption, currencyIndex) => (
+                              <option
+                                key={currencyIndex}
+                                value={currencyOption}
+                              >
+                                {currencyOption}
+                              </option>
+                            )
+                          )}
+                        </select>
+                      ) : (
                         <input
                           type="text"
                           id={subOption.component}
                           name={subOption.component}
-                          value={editForm.owner[subOption.component]} // Accede a la estructura correcta del objeto owner
+                          value={editForm.precio[subOption.component]}
                           onChange={handleChange}
-                          className=" bg-gray-50 rounded-sm border"
+                          className="bg-gray-50 rounded-sm border"
                         />
-                      </div>
-                    ))}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+              {/* Dueño */}
+              <div className="grid grid-cols-2 gap-x-6">
+                {/* Precio */}
+                <div className="w-full h-full">
+                  <p className="text-sm font-bold my-2">Precio</p>
+                  {propertiesPrice.map((option, index) => (
+                    <div
+                      key={`${option.id}_${index}`}
+                      className="grid grid-cols-2 gap-x-4"
+                    >
+                      {option.moreOptions.map((subOption, subIndex) => (
+                        <div
+                          key={`${option.id}_${subOption.id}_${subIndex}`}
+                          className="w-full h-full flex flex-col "
+                        >
+                          <label
+                            htmlFor={subOption.component}
+                            className="text-sm font-bold"
+                          >
+                            {subOption.name}
+                          </label>
+                          {subOption.component === "currency" ? (
+                            <select
+                              id={subOption.component}
+                              name={subOption.component}
+                              value={editForm.precio[subOption.component]}
+                              onChange={handleChange}
+                              className="bg-gray-50 rounded-sm border"
+                            >
+                              {subOption.options.map(
+                                (currencyOption, currencyIndex) => (
+                                  <option
+                                    key={currencyIndex}
+                                    value={currencyOption}
+                                  >
+                                    {currencyOption}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          ) : (
+                            <input
+                              type="text"
+                              id={subOption.component}
+                              name={subOption.component}
+                              value={editForm.precio[subOption.component]}
+                              onChange={handleChange}
+                              className="bg-gray-50 rounded-sm border"
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                {/* Dueño */}
+                <div className="w-full h-full">
+                  <p className="text-sm font-bold my-2">Dueño</p>
+                  {propertiesOwner.map((option, index) => (
+                    <div
+                      key={`${option.id}_${index}`}
+                      className="grid grid-cols-2 gap-x-4"
+                    >
+                      {option.moreOptions.map((subOption, index) => (
+                        <div
+                          key={`${option.id}_${index}`}
+                          className="w-full h-full flex flex-col "
+                        >
+                          <label
+                            htmlFor={subOption.component}
+                            className="text-sm font-bold"
+                          >
+                            {subOption.name}
+                          </label>
+                          <input
+                            type="text"
+                            id={subOption.component}
+                            name={subOption.component}
+                            value={editForm.owner[subOption.component]} // Accede a la estructura correcta del objeto owner
+                            onChange={handleChange}
+                            className=" bg-gray-50 rounded-sm border"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             {/* Servicios */}
             <div className="w-full h-full">
-              <p className="text-sm py-4">Servicios</p>
+              <p className="text-sm font-bold">Servicios</p>
               {propertiesServices.map((option, index) => (
                 <div
                   key={`${option.id}_${index}`}
-                  className="grid grid-cols-3 gap-x-20"
+                  className="grid grid-cols-6 gap-x-10"
                 >
                   {option.moreOptions.map((subOption, index) => (
                     <div
@@ -353,25 +381,30 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
               ))}
             </div>
             {/* Imagenes */}
-            <div className="grid grid-cols-8 gap-x-2">
-              {editForm.images.map((image, index) => (
-                <div key={`${index}`} className="relative">
-                  <img className="" src={image} alt={`Image ${index}`} />
-                  <button
-                    className="absolute top-0 right-0 p-1 bg-red-500 text-white rounded"
-                    onClick={() => {
-                      const updatedImages = [...editForm.images];
-                      updatedImages.splice(index, 1);
-                      setEditForm({
-                        ...editForm,
-                        images: updatedImages,
-                      });
-                    }}
-                  >
-                    X
-                  </button>
-                </div>
-              ))}
+            <div className="w-full h-full flex flex-col">
+              <p className="text-sm font-bold my-2">Imagenes</p>
+              <div className="w-full h-full flex flex-wrap gap-x-10">
+                {editForm.images.map((image, index) => (
+                  <div key={`${index}`} className="relative w-fit">
+                    <img
+                      className="w-24 h-24 "
+                      src={image}
+                      alt={`Image ${index}`}
+                    />
+                    <button
+                      className="absolute top-0 right-0 p-2 bg-red-500 text-white rounded"
+                      onClick={() => upParrayImg(index)}
+                    >
+                      X
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="w-4/12 mx-auto h-full flex justify-center items-center py-10">
+                <button className="w-full h-fit bg-gray-950 text-white py-4 rounded-lg">
+                  Guardar cambios
+                </button>
+              </div>
             </div>
           </div>
         </form>
