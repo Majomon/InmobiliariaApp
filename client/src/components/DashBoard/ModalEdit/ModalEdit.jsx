@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
   propertiesAddress,
@@ -12,7 +13,6 @@ import { FaX } from "react-icons/fa6";
 
 function ModalEdit({ propertyFound, setActiveEdit }) {
   const [editForm, setEditForm] = useState({ ...propertyFound });
-
   const upParrayImg = (index) => {
     const updatedImages = [...editForm.images];
     updatedImages.splice(index, 1);
@@ -24,7 +24,6 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log(name);
     if (type === "checkbox") {
       setEditForm({
         ...editForm,
@@ -53,7 +52,7 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
           [name]: value,
         },
       });
-    } else if (name === "name" || name === "phone") {
+    } else if (name === "ownerNombre" || name === "ownerPhone") {
       setEditForm({
         ...editForm,
         owner: {
@@ -77,6 +76,21 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
     }
   };
 
+  const handlerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `https://inmobiliaria-api-green.vercel.app/properties/${editForm._id}`,
+        editForm
+      );
+      setActiveEdit(false);
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Manejar cualquier error que pueda ocurrir durante la solicitud
+      console.error("Error:", error);
+      // Aquí podrías mostrar un mensaje de error al usuario
+    }
+  };
   return (
     <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
       <div className="w-full mx-auto bg-gray-100 rounded-lg relative">
@@ -84,7 +98,7 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
         <div className="absolute top-4 right-4 w-8 h-8 bg-black flex justify-center items-center rounded-full cursor-pointer">
           <FaX onClick={() => setActiveEdit(false)} color="red" />
         </div>
-        <form>
+        <form onSubmit={handlerSubmit}>
           <div className="pt-12 px-10">
             {/* Primeras opciones */}
             <div className="w-full h-full grid grid-cols-4 gap-x-6 pb-4 ">
@@ -204,58 +218,8 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
                 </div>
               ))}
             </div>
+            {/* Precio y Dueño */}
             <div className="w-full h-full my-2 pb-2">
-              {/*Precio */}
-              {propertiesPrice.map((option, index) => (
-                <div
-                  key={`${option.id}_${index}`}
-                  className="grid grid-cols-2 gap-x-4"
-                >
-                  {option.moreOptions.map((subOption, subIndex) => (
-                    <div
-                      key={`${option.id}_${subOption.id}_${subIndex}`}
-                      className="w-full h-full flex flex-col"
-                    >
-                      <label
-                        htmlFor={subOption.component}
-                        className="text-sm font-bold"
-                      >
-                        {subOption.name}
-                      </label>
-                      {subOption.component === "currency" ? (
-                        <select
-                          id={subOption.component}
-                          name={subOption.component}
-                          value={editForm.precio[subOption.component]}
-                          onChange={handleChange}
-                          className="bg-gray-50 rounded-sm border"
-                        >
-                          {subOption.options.map(
-                            (currencyOption, currencyIndex) => (
-                              <option
-                                key={currencyIndex}
-                                value={currencyOption}
-                              >
-                                {currencyOption}
-                              </option>
-                            )
-                          )}
-                        </select>
-                      ) : (
-                        <input
-                          type="text"
-                          id={subOption.component}
-                          name={subOption.component}
-                          value={editForm.precio[subOption.component]}
-                          onChange={handleChange}
-                          className="bg-gray-50 rounded-sm border"
-                        />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
-              {/* Dueño */}
               <div className="grid grid-cols-2 gap-x-6">
                 {/* Precio */}
                 <div className="w-full h-full">

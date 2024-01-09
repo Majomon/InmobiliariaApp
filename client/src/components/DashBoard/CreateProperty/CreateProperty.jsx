@@ -51,8 +51,8 @@ function CreateProperty() {
     currency: "$",
     mount: 0,
     additionalExpense: "",
-    nombre: "",
-    phone: "",
+    ownerNombre: "",
+    ownerPhone: "",
   });
 
   const newProperty = {
@@ -93,8 +93,8 @@ function CreateProperty() {
     },
     images: formData.images,
     owner: {
-      name: formData.nombre,
-      phone: formData.phone,
+      ownerNombre: formData.name,
+      ownerPhone: formData.phone,
     },
     precio: {
       currency: formData.currency,
@@ -120,8 +120,8 @@ function CreateProperty() {
       images,
       currency,
       mount,
-      nombre,
-      phone,
+      ownerNombre,
+      ownerPhone,
     } = formData;
 
     return (
@@ -140,8 +140,8 @@ function CreateProperty() {
       images.length > 0 &&
       currency &&
       mount &&
-      nombre &&
-      phone
+      ownerNombre &&
+      ownerPhone
     );
   }
 
@@ -205,8 +205,8 @@ function CreateProperty() {
           currency: "$",
           mount: 0,
           additionalExpense: "",
-          nombre: "",
-          phone: "",
+          ownerNombre: "",
+          ownerPhone: "",
         });
       } else {
         // En caso de que la solicitud no sea exitosa, muestra una alerta de error

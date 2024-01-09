@@ -158,10 +158,10 @@ const propertiesSchema = mongoose.Schema({
   ],
   //Propietario
   owner: {
-    name: {
+    ownerNombre: {
       type: String,
     },
-    phone: {
+    ownerPhone: {
       type: Number,
     },
   },

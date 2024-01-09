@@ -101,8 +101,8 @@ function AllProperties() {
               <td className="text-xs">{prop.operation}</td>
               <td className="text-xs">{prop.address.street}</td>
               <td className="text-xs">{newDate(prop.creacion)}</td>
-              <td className="text-xs">{prop.owner.name}</td>
-              <td className="text-xs">{prop.owner.phone}</td>
+              <td className="text-xs">{prop.owner.ownerNombre}</td>
+              <td className="text-xs">{prop.owner.ownerPhone}</td>
               <td>
                 <button onClick={() => handleEdit(prop._id)}>
                   <svg
@@ -187,7 +187,12 @@ function AllProperties() {
           <h2 className="">No hay resultados encontrados</h2>
         </div>
       )}
-      {activeEdit && <ModalEdit propertyFound={propertyFound} setActiveEdit={setActiveEdit}/>}
+      {activeEdit && (
+        <ModalEdit
+          propertyFound={propertyFound}
+          setActiveEdit={setActiveEdit}
+        />
+      )}
     </ul>
   );
 }
