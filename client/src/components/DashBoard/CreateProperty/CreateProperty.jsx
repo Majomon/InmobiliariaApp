@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import ImgFirebase from "../ImgFirebase";
 
@@ -13,8 +13,11 @@ import {
   propertiesPrice,
   propertiesServices,
 } from "../optionsPostProperty.js";
+import { getAllProperties } from "../../../redux/actions.js";
+import { useDispatch } from "react-redux";
 
 function CreateProperty() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     operation: "Alquiler",
     property: "Departamento",
@@ -49,10 +52,10 @@ function CreateProperty() {
     wifi: false,
     images: [],
     currency: "$",
-    mount: 0,
-    additionalExpense: "",
     ownerNombre: "",
     ownerPhone: "",
+    mount: 0,
+    additionalExpense: "",
   });
 
   const newProperty = {
@@ -93,8 +96,8 @@ function CreateProperty() {
     },
     images: formData.images,
     owner: {
-      ownerNombre: formData.name,
-      ownerPhone: formData.phone,
+      ownerNombre: formData.ownerNombre,
+      ownerPhone: formData.ownerPhone,
     },
     precio: {
       currency: formData.currency,
@@ -161,7 +164,7 @@ function CreateProperty() {
     try {
       // Envío de la información para crear la propiedad mediante la acción correspondiente
       const res = await axios.post(
-        `https://inmobiliaria-api-green.vercel.app/properties`,
+        `http://localhost:8080/properties`,
         newProperty
       );
 
@@ -219,6 +222,9 @@ function CreateProperty() {
     }
   };
 
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, [handleSubmit]);
   return (
     <div className="w-full h-full">
       <form className="">

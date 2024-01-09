@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   propertiesAddress,
   propertiesDescription,
@@ -10,8 +10,11 @@ import {
   propertiesServices,
 } from "../optionsPostProperty.js";
 import { FaX } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { getAllProperties } from "../../../redux/actions.js";
 
-function ModalEdit({ propertyFound, setActiveEdit }) {
+function ModalEdit({ propertyFound, setActiveEdit, activeEdit }) {
+  const dispatch = useDispatch();
   const [editForm, setEditForm] = useState({ ...propertyFound });
   const upParrayImg = (index) => {
     const updatedImages = [...editForm.images];
@@ -80,7 +83,7 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://inmobiliaria-api-green.vercel.app/properties/${editForm._id}`,
+        `http://localhost:8080/properties/${editForm._id}`,
         editForm
       );
       setActiveEdit(false);
@@ -91,6 +94,10 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
       // Aquí podrías mostrar un mensaje de error al usuario
     }
   };
+
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, [handlerSubmit]);
   return (
     <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
       <div className="w-full mx-auto bg-gray-100 rounded-lg relative">

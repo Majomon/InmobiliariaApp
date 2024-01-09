@@ -21,6 +21,7 @@ const controllerPutProperty = async (
     creacion,
   }
 ) => {
+  console.log(services);
   const newProperty = await Property.findByIdAndUpdate(id, {
     operation,
     property,
