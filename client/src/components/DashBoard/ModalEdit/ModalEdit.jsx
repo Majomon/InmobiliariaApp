@@ -17,7 +17,13 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
     const { name, value, type, checked } = e.target;
     console.log(name);
     if (type === "checkbox") {
-      setEditForm({ ...editForm, [name]: checked });
+      setEditForm({
+        ...editForm,
+        services: {
+          ...editForm.services,
+          [name]: checked,
+        },
+      });
     } else if (name === "street" || name === "zone" || name === "province") {
       setEditForm({
         ...editForm,
@@ -46,19 +52,25 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
           [name]: value,
         },
       });
-    } else {
+    } /* else if (propertiesServices.some((option) => option.component === name)) {
+      setEditForm({
+        ...editForm,
+        services: {
+          ...editForm.services,
+          [name]: value,
+        },
+      });
+    }  */ else {
       setEditForm((prevState) => ({
         ...prevState,
         [name]: value,
       }));
     }
-
-    console.log(editForm);
   };
 
   return (
-    <div className="w-full fixed top-0 left-0 bottom-0 right-0 z-10 bg-black/90">
-      <div className="w-11/12 h-[90%] mx-auto my-10 bg-gray-100 rounded-lg relative">
+    <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
+      <div className="w-11/12 min-h-screen mx-auto my-10 bg-gray-100 rounded-lg relative">
         {/* Ícono de cerrar */}
         <button
           type="button"
@@ -310,6 +322,56 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* Servicios */}
+            <div className="w-full h-full">
+              <p className="text-sm py-4">Servicios</p>
+              {propertiesServices.map((option, index) => (
+                <div
+                  key={`${option.id}_${index}`}
+                  className="grid grid-cols-3 gap-x-20"
+                >
+                  {option.moreOptions.map((subOption, index) => (
+                    <div
+                      key={`${option.id}_${index}`}
+                      className="w-full h-full flex justify-between py-2"
+                    >
+                      <label htmlFor={subOption.component} className="text-sm">
+                        {subOption.name}
+                      </label>
+                      <input
+                        type="checkbox"
+                        id={subOption.component}
+                        name={subOption.component}
+                        checked={editForm.services[subOption.component]}
+                        onChange={handleChange}
+                        className="w-6 h-6 cursor-pointer"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            {/* Imagenes */}
+            <div className="grid grid-cols-8 gap-x-2">
+              {editForm.images.map((image, index) => (
+                <div key={`${index}`} className="relative">
+                  <img className="" src={image} alt={`Image ${index}`} />
+                  <button
+                    className="absolute top-0 right-0 p-1 bg-red-500 text-white rounded"
+                    onClick={() => {
+                      const updatedImages = [...editForm.images];
+                      updatedImages.splice(index, 1);
+                      setEditForm({
+                        ...editForm,
+                        images: updatedImages,
+                      });
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         </form>
