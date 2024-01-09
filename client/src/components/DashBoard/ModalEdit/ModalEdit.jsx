@@ -8,6 +8,7 @@ import {
   propertiesPrice,
   propertiesServices,
 } from "../optionsPostProperty.js";
+import { FaX } from "react-icons/fa6";
 
 function ModalEdit({ propertyFound, setActiveEdit }) {
   const [editForm, setEditForm] = useState({ ...propertyFound });
@@ -80,17 +81,9 @@ function ModalEdit({ propertyFound, setActiveEdit }) {
     <div className="w-full absolute top-0 left-0 bottom-0 right-0 z-10 bg-black">
       <div className="w-full mx-auto bg-gray-100 rounded-lg relative">
         {/* Ícono de cerrar */}
-        <button
-          type="button"
-          className="absolute right-0 top-0 z-10"
-          onClick={() => setActiveEdit(false)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            className="w-8 h-8 fill-red-600"
-          ></svg>
-        </button>
+        <div className="absolute top-4 right-4 w-8 h-8 bg-black flex justify-center items-center rounded-full cursor-pointer">
+          <FaX onClick={() => setActiveEdit(false)} color="red" />
+        </div>
         <form>
           <div className="pt-12 px-10">
             {/* Primeras opciones */}
